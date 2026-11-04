@@ -18,8 +18,9 @@ menu:
   Archives: /archives/ || fas fa-archive
   Tags: /tags/ || fas fa-tags
   Categories: /categories/ || fas fa-folder
+  Projects: /projects/ || fas fa-rocket
   # Link: /link/ || fas fa-link
-  # About: /about/ || fas fa-heart
+  About: /about/ || fas fa-heart
 
 # --------------------------------------
 # 社交链接
@@ -110,16 +111,16 @@ aside:
   position: right  # 位置: left / right
   card_author:
     enable: true
-    name: ls  # 你的名字
-    description: 技术博客 | 生活记录
+    name: LS  # 你的名字
+    description: Java 开发 | AI 工程实践 | 建站笔记
     button:
       enable: true
       icon: fab fa-github
       text: GitHub
       link: https://github.com/1559058283
   card_announcement:
-    enable: false
-    content: '欢迎来到我的博客！'
+    enable: true
+    content: '📍 正在求职<br>🔧 Java | Spring Boot | AI<br>📝 记录建站、部署、踩坑全过程<br>💬 欢迎访问交流 ~'
   card_categories:
     enable: true
     limit: 8

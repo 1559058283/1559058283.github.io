@@ -9,15 +9,32 @@ tags:
   - 教程
 categories:
   - 教程
+description: 从购买域名、服务器到部署上线，详细介绍使用 Hexo + Butterfly 搭建个人技术博客的完整流程，适合零基础新手。
 ---
 
 # 从零开始搭建个人技术博客 - 完整指南
 
 > 本指南涵盖从注册域名到上线运营的全流程。
 
+**本文档版本信息：**
+> - 教程日期：2026年4月
+> - Hexo 版本：7.x
+> - Butterfly 版本：4.x
+> - 阿里云服务器 Ubuntu 22.04
+
 ---
 
 ## 第一部分：前提准备
+
+在开始之前，先选择适合你的部署方案：
+
+| 方案 | 优点 | 缺点 | 适合人群 |
+|------|------|------|----------|
+| **云服务器 + 宝塔** | 自由度高等 | 需要付费、需维护 | 想要学习运维、长期运营 |
+| **GitHub Pages** | 免费、零运维 | 国内访问慢、无自定义端口 | 轻量博客、练习项目 |
+| **Vercel/Netlify** | 免费、CDN加速 | 国内访问可能不稳定 | 个人博客、开源项目 |
+
+> **本指南主要介绍云服务器方案**。如果你用 GitHub Pages，可参考 Hexo 官方文档的 [GitHub Pages 部署](https://hexo.io/docs/github-pages) 方法。
 
 ### 1.1 注册域名
 
@@ -108,8 +125,8 @@ npm install -g hexo-cli
 hexo init 你的博客项目名
 cd 你的博客项目名
 
-# 安装主题
-git clone https://github.com/jerryc127/hexo-theme-butterfly.git themes/hexo-theme-butterfly
+# 安装主题（克隆到 themes/butterfly）
+git clone https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
 
 # 安装依赖
 npm install
@@ -132,7 +149,7 @@ root: /
 
 permalink: :year/:month/:day/:title/
 
-theme: hexo-theme-butterfly
+theme: butterfly
 ```
 
 ---
@@ -141,7 +158,7 @@ theme: hexo-theme-butterfly
 
 ### 4.1 导航菜单
 
-编辑 `themes/hexo-theme-butterfly/_config.yml`：
+编辑 `themes/butterfly/_config.yml`：
 
 ```yaml
 menu:
@@ -181,17 +198,26 @@ subtitle:
 2. 选择用于评论的仓库
 3. 启用 Discussions 功能
 
-在主题配置中：
+在主题配置 `themes/butterfly/_config.yml` 中：
 
 ```yaml
+# 评论设置 (Giscus)
 comments:
   use: Giscus
-  Giscus:
-    repo: 你的GitHub用户名/你的仓库
-    repo_id: 你的repo_id
-    category: Announcements
-    category_id: 你的category_id
-    mapping: pathname
+  text: true
+  lazyload: false
+  count: false
+  card_post_count: false
+
+# Giscus 配置（顶层）
+giscus:
+  repo: 你的GitHub用户名/你的仓库
+  repo_id: 你的repo_id
+  category: Announcements
+  category_id: 你的category_id
+  mapping: pathname
+  theme: light
+  lang: zh-CN
 ```
 
 ---
@@ -360,10 +386,13 @@ npm run deploy  # 部署到服务器
 ### 10.2 更新
 
 ```bash
-# 更新主题
-cd themes/hexo-theme-butterfly && git pull
+# 更新主题（进入主题目录拉取最新代码）
+cd themes/butterfly && git pull
 
-# 更新 Hexo
+# 更新项目本地 Hexo 版本（推荐）
+npm update hexo
+
+# 如需更新全局 Hexo CLI（通常不需要）
 npm update -g hexo
 ```
 
