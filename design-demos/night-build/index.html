@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="LS 的 Night Build 技术日志" />
+    <title>Night Build — LS</title>
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">跳到正文</a>
+    <header class="console-header">
+      <a class="console-brand" href="./"><span aria-hidden="true">λ</span> aitechflow://home</a>
+      <nav aria-label="主导航"><a href="#logs">/logs</a><a href="#builds">/builds</a><a href="#about">/about</a><a href="https://github.com/1559058283">github ↗</a></nav>
+      <div class="live"><i></i> SYSTEM ONLINE</div>
+    </header>
+
+    <main id="content">
+      <section class="console-hero console-shell">
+        <div class="hero-copy">
+          <p class="path">~/people/ls <span>on main</span></p>
+          <h1>BUILD.<br />BREAK.<br /><em>DOCUMENT.</em></h1>
+          <p>后端开发与 AI 工程日志。记录从第一次运行，到部署上线，再到问题真正解决的全过程。</p>
+          <div class="hero-links"><a href="#logs">读取最新日志</a><a href="mailto:lswyyj@163.com">建立连接 ↗</a></div>
+        </div>
+
+        <div class="terminal" aria-label="LS 的个人信息终端">
+          <div class="terminal-bar"><div><span></span><span></span><span></span></div><p>ls — zsh — 80×24</p></div>
+          <div class="terminal-body">
+            <p><b>guest@aitechflow</b>:<i>~</i>$ whoami</p>
+            <p class="response">LS — backend developer</p>
+            <p><b>guest@aitechflow</b>:<i>~</i>$ focus --active</p>
+            <p class="response"><span>01</span> Java / Spring Boot<br /><span>02</span> AI application / RAG<br /><span>03</span> Linux / deployment</p>
+            <p><b>guest@aitechflow</b>:<i>~</i>$ status</p>
+            <p class="response status-response">OPEN_TO_WORK=<strong>true</strong></p>
+            <p><b>guest@aitechflow</b>:<i>~</i>$ <span class="cursor">_</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="telemetry" aria-label="站点信息">
+        <div class="console-shell telemetry-grid">
+          <p><span>ARTICLES</span><strong>01</strong></p><p><span>TOPICS</span><strong>04</strong></p><p><span>DEPLOY</span><strong>PASS</strong></p><p><span>HOST</span><strong>GITHUB PAGES</strong></p>
+        </div>
+      </section>
+
+      <section class="console-section console-shell" id="logs">
+        <header class="console-section-head"><div><span>01</span><h2>Recent logs</h2></div><p>按时间倒序 / 最新构建优先</p></header>
+        <article class="log-card">
+          <div class="log-rail"><i></i><span>2026-04-20<br />17:00:00</span></div>
+          <div class="log-main">
+            <div class="log-flags"><span>DEPLOYMENT</span><span>TUTORIAL</span><span class="flag-pass">PUBLISHED</span></div>
+            <h3><a href="./article.html">从零开始搭建个人技术博客</a></h3>
+            <p>域名、服务器、Hexo 与静态托管的完整路径。后来本站已经迁移到 GitHub Pages，这份日志也记录了新的结论。</p>
+            <a class="read-log" href="./article.html">cat log/001.md ↗</a>
+          </div>
+          <pre class="mini-output"><code><span>build</span>  success
+<span>pages</span>  deployed
+<span>https</span>  enforced
+<span>cname</span>  aitechflow.cn</code></pre>
+        </article>
+      </section>
+
+      <section class="console-section console-shell" id="builds">
+        <header class="console-section-head"><div><span>02</span><h2>Active build</h2></div><p>当前项目 / 持续交付</p></header>
+        <article class="build-panel">
+          <div class="build-title"><p>PROJECT_001</p><h3>aitechflow.cn</h3><span class="build-state"><i></i> LIVE</span></div>
+          <p class="build-description">个人技术博客与工程档案。源码、文章和 GitHub Actions 部署流程集中在一个仓库，推送后自动发布。</p>
+          <div class="pipeline" aria-label="部署流水线"><div class="done"><span>01</span><b>Source</b><small>Markdown</small></div><i></i><div class="done"><span>02</span><b>Build</b><small>Static HTML</small></div><i></i><div class="done"><span>03</span><b>Deploy</b><small>GitHub Pages</small></div><i></i><div class="active"><span>04</span><b>Write</b><small>In progress</small></div></div>
+        </article>
+      </section>
+
+      <section class="console-about console-shell" id="about">
+        <img src="../../source/img/avatar.jpg" alt="LS 的仓鼠头像" width="94" height="94" />
+        <div><p>OPERATOR / LS</p><h2>让经验留下可执行的下一步。</h2></div>
+        <p>正在学习 AI 和大模型应用开发，也在准备后端开发岗位。本站用于保存技术分享、踩坑记录和个人项目。</p>
+      </section>
+    </main>
+
+    <footer class="console-footer console-shell"><span>EOF</span><span>© 2026 LS</span><a href="mailto:lswyyj@163.com">lswyyj@163.com</a></footer>
+  </body>
+</html>
+

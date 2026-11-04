@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从零开始搭建个人技术博客完整指南" />
+    <title>log/001 — 搭建个人技术博客</title>
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="night-article-page">
+    <a class="skip-link" href="#article">跳到正文</a>
+    <header class="console-header">
+      <a class="console-brand" href="./"><span aria-hidden="true">λ</span> aitechflow://log/001</a>
+      <nav aria-label="文章导航"><a href="./">← /home</a><a href="#contents">/contents</a><a href="https://github.com/1559058283">github ↗</a></nav>
+      <div class="live"><i></i> READING</div>
+    </header>
+
+    <main id="article">
+      <header class="night-article-head console-shell">
+        <p class="path">log/001.md <span>status: published</span></p>
+        <h1>从零开始搭建<br />个人技术博客</h1>
+        <p class="night-deck">从域名、服务器到部署上线，记录一条经过验证的完整路径。</p>
+        <div class="night-meta"><span>2026-04-20 17:00</span><span>18 MIN READ</span><span>DEPLOYMENT</span><span>REV.01</span></div>
+      </header>
+
+      <div class="night-article-grid console-shell">
+        <aside class="night-toc" id="contents">
+          <p>TABLE_OF_CONTENTS</p>
+          <ol><li><a href="#prep">前提准备</a></li><li><a href="#compare">方案比较</a></li><li><a href="#generate">生成静态文件</a></li><li><a href="#check">部署验证</a></li></ol>
+          <div class="file-data"><span>FILE</span><b>001.md</b><span>WORDS</span><b>4,281</b><span>UPDATED</span><b>2026.04.20</b></div>
+        </aside>
+
+        <article class="night-prose">
+          <p class="night-lead">本指南涵盖从注册域名到上线运营的全流程。重点是建立一套能够重复执行、能够验证、也能够回退的部署方法。</p>
+          <div class="runtime-note"><span>UPDATE</span><p>本站目前由 GitHub Pages 托管，推送源码后由 GitHub Actions 自动构建和发布。</p></div>
+
+          <section id="prep"><span class="log-index">[01]</span><h2>前提准备</h2><p>你需要一个域名和一个 GitHub 仓库。文章以 Markdown 保存，静态生成器把内容转换为浏览器可以访问的文件。</p></section>
+
+          <section id="compare"><span class="log-index">[02]</span><h2>方案比较</h2><div class="night-table"><div class="night-tr night-th"><span>MODE</span><span>MAINTENANCE</span><span>USE_CASE</span></div><div class="night-tr"><strong>GitHub Pages</strong><span>Low</span><span>Static blog</span></div><div class="night-tr"><strong>Cloud server</strong><span>High</span><span>Backend service</span></div><div class="night-tr"><strong>Vercel / Netlify</strong><span>Low</span><span>Frontend app</span></div></div></section>
+
+          <section id="generate"><span class="log-index">[03]</span><h2>生成静态文件</h2><p>生产构建应该可重复。依赖从锁文件安装，输出目录由持续集成任务生成。</p><pre><code><span class="prompt">$</span> npm ci
+<span class="output">added dependencies from lockfile</span>
+<span class="prompt">$</span> npm run build
+<span class="success">✔ generated static files</span></code></pre></section>
+
+          <section id="check"><span class="log-index">[04]</span><h2>部署验证</h2><p>检查页面状态码、HTTPS、自定义域名、手机布局和旧链接。构建成功只是开始，最终结果必须在线上验证。</p><ul class="night-checks"><li><span>PASS</span>核心页面返回 200</li><li><span>PASS</span>HTTPS 已强制启用</li><li><span>PASS</span>www 跳转到主域名</li><li><span>PASS</span>保留迁移前版本标签</li></ul></section>
+
+          <footer class="night-article-end"><span>END_OF_LOG</span><a href="./">cd ~/home →</a></footer>
+        </article>
+      </div>
+    </main>
+
+    <footer class="console-footer console-shell"><span>EOF</span><span>© 2026 LS</span><span>LOG 001</span></footer>
+  </body>
+</html>

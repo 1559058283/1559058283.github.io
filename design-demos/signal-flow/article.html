@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从零开始搭建个人技术博客完整指南" />
+    <title>从零开始搭建个人技术博客 — LS</title>
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="article-page">
+    <a class="skip-link" href="#article">跳到正文</a>
+    <header class="site-header article-header">
+      <a class="brand" href="./"><span class="brand-pulse" aria-hidden="true"></span><span>AITECHFLOW</span><small>/ LS</small></a>
+      <nav class="desktop-nav" aria-label="主导航"><a href="./">首页</a><a href="#article">文章</a><a href="https://github.com/1559058283">GitHub ↗</a></nav>
+      <a class="mobile-back" href="./">← 首页</a>
+    </header>
+
+    <main id="article">
+      <header class="article-hero shell">
+        <div class="article-route"><span>NOTES</span><i></i><span>DEPLOYMENT</span><i></i><span>001</span></div>
+        <h1>从零开始搭建<br />个人技术博客</h1>
+        <p class="article-deck">从购买域名、服务器到部署上线，一份面向第一次建站者的完整流程记录。</p>
+        <div class="article-meta"><span>2026-04-20</span><span>约 18 分钟</span><span>教程</span><span>更新于 2026-04-20</span></div>
+      </header>
+
+      <div class="article-layout shell">
+        <aside class="article-toc" aria-label="本文目录">
+          <p>ON THIS PAGE</p>
+          <ol>
+            <li><a href="#before">前提准备</a></li>
+            <li><a href="#options">选择部署方案</a></li>
+            <li><a href="#build">生成静态网站</a></li>
+            <li><a href="#ship">上线与验证</a></li>
+          </ol>
+          <a class="toc-back" href="./">← 返回首页</a>
+        </aside>
+
+        <article class="prose">
+          <p class="lead">本指南涵盖从注册域名到上线运营的全流程。重点不是记住命令，而是理解域名、源码、构建产物和托管平台之间怎样连接起来。</p>
+
+          <section id="before">
+            <p class="section-marker">01</p>
+            <h2>开始之前</h2>
+            <p>个人博客可以托管在云服务器，也可以部署到专门的静态托管平台。两种方式都能工作，选择主要取决于你是否愿意持续维护服务器。</p>
+            <blockquote><strong>现在本站采用 GitHub Pages。</strong>源码推送到主分支后，GitHub Actions 自动构建并发布，不再依赖持续运行的云服务器。</blockquote>
+          </section>
+
+          <section id="options">
+            <p class="section-marker">02</p>
+            <h2>选择部署方案</h2>
+            <div class="prose-table" role="table" aria-label="部署方案比较">
+              <div class="table-row table-head" role="row"><span>方案</span><span>优势</span><span>适合</span></div>
+              <div class="table-row" role="row"><strong>GitHub Pages</strong><span>免费、零运维</span><span>静态博客</span></div>
+              <div class="table-row" role="row"><strong>云服务器</strong><span>自由度高</span><span>需要后端服务</span></div>
+              <div class="table-row" role="row"><strong>Vercel / Netlify</strong><span>预览方便</span><span>前端项目</span></div>
+            </div>
+          </section>
+
+          <section id="build">
+            <p class="section-marker">03</p>
+            <h2>生成静态网站</h2>
+            <p>文章保存在 Markdown 文件中，生成器负责把它们转换成浏览器可以直接访问的 HTML、CSS 和 JavaScript。</p>
+            <pre><code><span class="code-comment"># 安装依赖并生成静态文件</span>
+npm ci
+npm run build
+
+<span class="code-comment"># 本地预览</span>
+npm run dev</code></pre>
+            <p>构建目录不需要提交到仓库。持续集成任务会在每次发布时重新生成，源码始终是唯一可信来源。</p>
+          </section>
+
+          <section id="ship">
+            <p class="section-marker">04</p>
+            <h2>上线与验证</h2>
+            <p>部署成功不只意味着任务显示绿色。还要确认自定义域名、HTTPS、主要页面、移动端布局和旧链接都能正常工作。</p>
+            <ul class="check-list">
+              <li><span>✓</span>首页、文章页与项目页返回 200</li>
+              <li><span>✓</span>根域名和 www 使用 HTTPS</li>
+              <li><span>✓</span>手机与桌面阅读宽度合理</li>
+              <li><span>✓</span>保留可回退的版本标签</li>
+            </ul>
+          </section>
+
+          <footer class="article-end">
+            <p>这篇文章会随本站的技术方案继续更新。</p>
+            <div class="article-tags"><a href="#">Hexo</a><a href="#">建站</a><a href="#">GitHub Pages</a></div>
+          </footer>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer shell"><p>© 2026 LS</p><a href="./">继续浏览文章</a></footer>
+  </body>
+</html>

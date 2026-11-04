@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从零开始搭建个人技术博客完整指南" />
+    <title>ARTICLE 001 — 搭建个人技术博客</title>
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#article">跳到正文</a>
+    <header class="mod-header article-nav">
+      <a class="mod-logo" href="./">AI<br />TECH<br />FLOW</a>
+      <p class="edition">ARTICLE / 001<br />DEPLOYMENT</p>
+      <nav aria-label="文章导航"><a href="./">返回首页</a><a href="#toc">目录</a></nav>
+      <a class="github-box" href="https://github.com/1559058283">SOURCE<br />GITHUB ↗</a>
+    </header>
+
+    <main id="article">
+      <header class="mod-article-head">
+        <div class="article-id"><span>ARTICLE</span><strong>001</strong></div>
+        <div class="article-title"><p>DEPLOYMENT / TUTORIAL / 2026</p><h1>从零开始搭建<br />个人技术博客</h1></div>
+        <p class="article-standfirst">从购买域名、服务器到部署上线，一份经过实际迁移和验证的完整流程记录。</p>
+        <dl class="article-data"><div><dt>DATE</dt><dd>2026.04.20</dd></div><div><dt>READ</dt><dd>18 MIN</dd></div><div><dt>STATUS</dt><dd>UPDATED</dd></div></dl>
+      </header>
+
+      <div class="mod-article-body">
+        <aside class="mod-toc" id="toc"><p>CONTENTS</p><ol><li><a href="#prep">前提准备</a></li><li><a href="#compare">方案比较</a></li><li><a href="#build">静态构建</a></li><li><a href="#verify">上线验证</a></li></ol><a class="toc-home" href="./">← BACK TO INDEX</a></aside>
+        <article class="mod-prose">
+          <p class="mod-lead">这篇指南关注一件事：怎样把本地的 Markdown 和配置文件，可靠地变成任何人都能通过域名访问的网站。</p>
+          <div class="mod-update"><strong>UPDATE / 2026</strong><p>本站现已迁移到 GitHub Pages。推送源码后自动构建，不再需要云服务器持续运行静态页面。</p></div>
+
+          <section id="prep"><div class="big-index">01</div><div><p class="section-type">PREPARATION</p><h2>前提准备</h2><p>准备域名和 GitHub 仓库。文章使用 Markdown 编写，配置文件描述网站名称、URL、路径和构建方式。</p></div></section>
+
+          <section id="compare"><div class="big-index">02</div><div><p class="section-type">DECISION</p><h2>选择部署方案</h2><div class="mod-table"><div><b>GitHub Pages</b><span>零运维</span><span>静态博客</span></div><div><b>云服务器</b><span>需要维护</span><span>后端服务</span></div><div><b>Vercel / Netlify</b><span>预览方便</span><span>前端应用</span></div></div></div></section>
+
+          <section id="build"><div class="big-index">03</div><div><p class="section-type">BUILD</p><h2>生成静态文件</h2><p>锁文件保证依赖版本一致，构建命令负责生成最终页面。输出目录可以随时重建。</p><pre><code>npm ci
+npm run build
+npm run dev</code></pre></div></section>
+
+          <section id="verify"><div class="big-index">04</div><div><p class="section-type">VERIFICATION</p><h2>上线与验证</h2><p>检查 HTTPS、域名跳转、核心页面状态码和手机布局。保留迁移前标签，确保出现问题时可以回退。</p><ul><li>200 / 首页</li><li>200 / 文章页</li><li>HTTPS / 强制启用</li><li>CNAME / aitechflow.cn</li></ul></div></section>
+
+          <footer class="mod-article-end"><span>ARTICLE 001 / END</span><a href="./">NEXT: RETURN TO INDEX ↗</a></footer>
+        </article>
+      </div>
+    </main>
+
+    <footer class="mod-footer"><span>AITECHFLOW.CN</span><span>© LS / 2026</span><span>ARTICLE 001</span></footer>
+  </body>
+</html>

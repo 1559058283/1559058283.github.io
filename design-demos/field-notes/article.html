@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从零开始搭建个人技术博客完整指南" />
+    <title>现场记录 #001 — 搭建个人技术博客</title>
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#article">跳到正文</a>
+    <div class="notebook article-notebook">
+      <header class="notes-header">
+        <a class="notes-brand" href="./"><strong>LS</strong><span>工程现场笔记</span></a>
+        <p class="issue">FIELD LOG · ENTRY 001</p>
+        <nav aria-label="文章导航"><a href="./">返回首页</a><a href="#contents">目录</a></nav>
+      </header>
+
+      <main id="article" class="field-article">
+        <header class="field-article-head">
+          <div class="margin-code" aria-hidden="true">001</div>
+          <div>
+            <p class="entry-label">DEPLOYMENT NOTE / VERIFIED</p>
+            <h1>从零开始搭建<br />个人技术博客</h1>
+            <p class="article-summary">从域名和服务器开始，到生成静态页面、配置 HTTPS，再到完成上线验证。</p>
+          </div>
+          <dl class="entry-facts">
+            <div><dt>记录日期</dt><dd>2026-04-20</dd></div>
+            <div><dt>分类</dt><dd>教程</dd></div>
+            <div><dt>预计阅读</dt><dd>18 分钟</dd></div>
+            <div><dt>状态</dt><dd>持续更新</dd></div>
+          </dl>
+        </header>
+
+        <div class="field-article-grid">
+          <aside id="contents" class="margin-notes">
+            <p class="margin-title">页边索引</p>
+            <ol><li><a href="#prep">前提准备</a></li><li><a href="#choose">方案比较</a></li><li><a href="#build">生成网站</a></li><li><a href="#verify">上线验证</a></li></ol>
+            <div class="pencil-note">更新：本站已经改用 GitHub Pages，不再依赖云服务器运行静态页面。</div>
+          </aside>
+
+          <article class="field-prose">
+            <p class="field-lead">这不是一份只给出命令的教程。先理解各部分如何协作，遇到问题时才知道应该检查域名、构建还是托管设置。</p>
+
+            <section id="prep">
+              <span class="section-ref">01 / PREP</span><h2>前提准备</h2>
+              <p>开始之前，需要准备一个域名，以及保存文章源码的 GitHub 仓库。静态博客不需要数据库，生成后的文件可以直接由托管平台提供访问。</p>
+              <div class="field-callout"><strong>现场结论</strong><p>如果网站只有静态页面，GitHub Pages 能减少服务器费用和日常维护。</p></div>
+            </section>
+
+            <section id="choose">
+              <span class="section-ref">02 / DECISION</span><h2>方案比较</h2>
+              <table><thead><tr><th>方案</th><th>维护成本</th><th>用途</th></tr></thead><tbody><tr><td>GitHub Pages</td><td>低</td><td>静态博客</td></tr><tr><td>云服务器</td><td>高</td><td>需要后端服务</td></tr><tr><td>Vercel / Netlify</td><td>低</td><td>前端应用</td></tr></tbody></table>
+            </section>
+
+            <section id="build">
+              <span class="section-ref">03 / BUILD</span><h2>生成静态网站</h2>
+              <p>Markdown 是内容源文件，构建命令负责生成 HTML。生成目录可以随时重建，因此不需要提交到主仓库。</p>
+              <pre><code># 安装依赖
+npm ci
+
+# 生成静态文件
+npm run build</code></pre>
+            </section>
+
+            <section id="verify">
+              <span class="section-ref">04 / CHECK</span><h2>上线与验证</h2>
+              <p>部署完成后依次检查 HTTPS、域名跳转、首页、文章页和手机布局。最后保留一个可回退的版本标签。</p>
+              <div class="verification"><span>PASS</span><p>核心页面可访问、自定义域名有效、线上文件与本地构建一致。</p></div>
+            </section>
+
+            <footer class="field-end"><p>记录结束 / 后续随技术方案更新</p><a href="./">返回全部笔记 →</a></footer>
+          </article>
+        </div>
+      </main>
+
+      <footer class="notes-footer"><span>AITECHFLOW.CN</span><span>ENTRY 001</span><span>PAGE 02</span></footer>
+    </div>
+  </body>
+</html>
