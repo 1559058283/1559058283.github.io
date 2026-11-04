@@ -1,0 +1,31 @@
+{
+  "name": "aitechflow-blog",
+  "version": "1.0.0",
+  "hexo": {
+    "version": "6.3.0"
+  },
+  "description": "aitechflow.cn 个人博客",
+  "scripts": {
+    "dev": "hexo server",
+    "build": "node run-hexo.js",
+    "deploy": "hexo deploy"
+  },
+  "devDependencies": {
+    "hexo-cli": "^4.3.2"
+  },
+  "dependencies": {
+    "hexo": "^6.3.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-feed": "^4.0.0",
+    "hexo-generator-index": "^4.0.0",
+    "hexo-generator-search": "^2.4.3",
+    "hexo-generator-sitemap": "^3.0.1",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^7.0.1",
+    "hexo-renderer-pug": "^3.0.0",
+    "hexo-renderer-sass": "^0.5.0",
+    "hexo-renderer-stylus": "^3.0.1"
+  }
+}

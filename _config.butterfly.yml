@@ -1,0 +1,225 @@
+# --------------------------------------
+# Hexo Butterfly Theme Configuration
+# https://butterfly.js.org/
+# --------------------------------------
+
+# --------------------------------------
+# 导航栏设置
+# --------------------------------------
+nav:
+  logo: # 图片: /img/logo.png
+  display_title: true
+  display_post_title: true
+  fixed: false
+
+# 菜单设置
+menu:
+  Home: / || fas fa-home
+  Archives: /archives/ || fas fa-archive
+  Tags: /tags/ || fas fa-tags
+  Categories: /categories/ || fas fa-folder
+  Projects: /projects/ || fas fa-rocket
+  # Link: /link/ || fas fa-link
+  About: /about/ || fas fa-heart
+
+# --------------------------------------
+# 社交链接
+# --------------------------------------
+social:
+  fas fa-github: https://github.com/1559058283 || GitHub || '#24292e'
+  fas fa-envelope: mailto:lswyyj@163.com || Email || '#4a7dbe'
+  # fas fa-twitter: https://twitter.com/你的ID || Twitter || '#1da1f2'
+  # fas fa-weixin: javascript:void(0) || WeChat || '#07c160'
+  # fas fa-qq: javascript:void(0) || QQ || '#12b7f5'
+
+# --------------------------------------
+# 头像设置
+# --------------------------------------
+avatar:
+  img: /img/avatar.jpg  # 你的头像图片
+  effect: true  # 头像闪烁效果
+
+# --------------------------------------
+# 顶部图设置
+# --------------------------------------
+disable_top_img: false
+
+# 首页 banner 图
+index_img: 
+
+# --------------------------------------
+# 首页封面设置
+# --------------------------------------
+cover:
+  index_enable: true
+  index_img: 
+  aside_enable: true
+  aside_img: /img/cover.jpg  # 侧边栏背景图
+
+# --------------------------------------
+# 背景设置
+# --------------------------------------
+# 纯色背景
+background: '#fafafa'  # 白色背景
+
+# --------------------------------------
+# 页脚设置
+# --------------------------------------
+footer:
+  owner:
+    enable: true
+    since: 2026
+  custom_text: 'Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://butterfly.js.org" target="_blank">Butterfly</a>'
+
+# --------------------------------------
+# 文章设置
+# --------------------------------------
+post:
+  # 文章封面
+  cover:
+    index_enable: true
+    aside_enable: true
+    width: 100%
+    syncing: true
+  # 文章创建时间
+  date_format: 'YYYY-MM-DD'
+  # 文章末尾添加版权信息
+  copyright: true
+  # 分享按钮
+  share:
+    enable: true
+    sites: weibo,qq,wechat,facebook,twitter,telegram
+
+# --------------------------------------
+# 代码块设置
+# --------------------------------------
+code_blocks:
+  theme: light
+  macStyle: true
+  height_limit: 500
+  word_wrap: false
+  copy: true
+  language: true
+  shrink: true
+
+# --------------------------------------
+# 侧边栏设置
+# --------------------------------------
+aside:
+  enable: true
+  mobile: true  # 移动端显示
+  position: right  # 位置: left / right
+  card_author:
+    enable: true
+    name: LS  # 你的名字
+    description: Java 开发 | AI 工程实践 | 建站笔记
+    button:
+      enable: true
+      icon: fab fa-github
+      text: GitHub
+      link: https://github.com/1559058283
+  card_announcement:
+    enable: true
+    content: '📍 正在求职<br>🔧 Java | Spring Boot | AI<br>📝 记录建站、部署、踩坑全过程<br>💬 欢迎访问交流 ~'
+  card_categories:
+    enable: true
+    limit: 8
+  card_tags:
+    enable: true
+    limit: 20
+  card_archives:
+    enable: true
+    format: 'YYYY-MM'
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
+
+# --------------------------------------
+# 搜索设置
+# --------------------------------------
+search:
+  enable: true
+  path: search.xml
+  field: all
+  content: true
+
+# --------------------------------------
+# 评论设置 (Giscus)
+# --------------------------------------
+comments:
+  use: Giscus
+  text: true
+  lazyload: false
+  count: false
+  card_post_count: false
+
+# --------------------------------------
+# 订阅设置
+# --------------------------------------
+# 这里可以添加 email 订阅等功能
+
+# --------------------------------------
+# 统计设置
+# --------------------------------------
+# 不蒜子统计
+busuanzi:
+  enable: true
+  site_uv: true
+  site_pv: true
+  page_pv: true
+  # icon: <i class="fas fa-eye"></i>
+
+# --------------------------------------
+# 彩虹特效
+# --------------------------------------
+# 鼠标点击特效
+click_effect:
+  enable: true
+  followers: true
+
+# --------------------------------------
+# 页面加载特效
+# --------------------------------------
+# 预加载
+preloader:
+  enable: true
+  leave_msg: '系统正在加载中，请稍候...'
+
+# --------------------------------------
+# 字体设置
+# --------------------------------------
+font:
+  global-font-size: 16px
+  code-font-size: 14px
+  # 字体: "'Noto Serif SC', serif"
+  # 中文字体
+  # font-family: "'Microsoft YaHei', 'PingFang SC', sans-serif"
+
+# --------------------------------------
+# 颜色配置
+# --------------------------------------
+# 主题色
+theme_color: '#3b70fc'  # 蓝色主题
+
+# --------------------------------------
+# 夜间模式
+# --------------------------------------
+darkmode:
+  enable: true
+  # 默认: follow - 跟随系统; light - 亮色; dark - 暗色
+  default: follow
+
+# --------------------------------------
+# 透明度设置
+# --------------------------------------
+# 卡片透明度
+card_transparency:
+
+# --------------------------------------
+# CDN设置
+# --------------------------------------
+# 使用 jsdelivr
+vendors:
+  css: https://cdn.jsdelivr.net/npm/
+  js: https://cdn.jsdelivr.net/npm/

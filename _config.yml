@@ -1,0 +1,45 @@
+title: LS | 技术博客
+subtitle: 'Java 开发 | AI 工程实践 | 个人建站笔记'
+description: '后端开发工程师的技术博客。记录 Java/AI 工程实践、部署踩坑和个人建站过程。正在求职，欢迎交流。'
+keywords:
+  - 技术博客
+  - Java
+  - AI
+  - 大模型
+  - Hexo
+  - 建站教程
+author: LS
+language: zh-CN
+timezone: Asia/Shanghai
+
+url: https://aitechflow.cn
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+
+theme: hexo-theme-butterfly
+
+deploy:
+  type: ''
+
+search:
+  path: search.xml
+  field: post
+  content: true
