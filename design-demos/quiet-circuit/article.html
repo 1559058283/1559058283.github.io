@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从零开始搭建个人技术博客完整指南" />
+    <title>构建节点 001 — 静默回路</title>
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="./style.css?v=2" />
+  </head>
+  <body class="article-view">
+    <a class="skip-link" href="#article">跳到正文</a>
+    <header class="circuit-head"><a class="circuit-brand" href="./"><span>AF</span><b>AITECHFLOW / QUIET CIRCUIT</b></a><nav aria-label="文章导航"><a href="./">返回首页</a><a href="#toc">路径</a><a href="#verify">验证</a></nav><p><i></i> READING NODE 001</p></header>
+
+    <main id="article">
+      <header class="node-hero circuit-width">
+        <div class="node-route"><span>ROOT</span><i></i><span>DEPLOYMENT</span><i></i><strong>NODE 001</strong></div>
+        <div class="node-title"><p>FIELD GUIDE / 2026.04.20</p><h1>从零开始搭建<br />个人技术博客</h1><p>把域名、仓库、构建任务和托管平台连接成一条可维护的发布回路。</p></div>
+        <dl><div><dt>INPUT</dt><dd>Markdown</dd></div><div><dt>BUILD</dt><dd>Static HTML</dd></div><div><dt>OUTPUT</dt><dd>GitHub Pages</dd></div></dl>
+      </header>
+
+      <div class="node-layout circuit-width">
+        <aside class="node-toc" id="toc"><p>ROUTE MAP</p><ol><li><a href="#before"><i></i><span>01</span>前提准备</a></li><li><a href="#choose"><i></i><span>02</span>方案判断</a></li><li><a href="#build"><i></i><span>03</span>执行构建</a></li><li><a href="#verify"><i></i><span>04</span>验证输出</a></li></ol><a class="back-link" href="./">← 退出节点</a></aside>
+        <article class="node-prose">
+          <p class="node-lead">不要把建站理解为一组彼此无关的命令。它是一条数据流：Markdown 进入仓库，被构建任务转换，最后从托管平台输出给浏览器。</p>
+          <section id="before"><header><span>NODE / 01</span><b>READY</b></header><h2>前提准备</h2><p>准备域名、GitHub 仓库和可以在本地运行的静态生成器。文章源码应该保存在仓库中，生成目录则由自动化任务随时重建。</p><div class="node-note"><span>DECISION</span><p>静态内容没有必要持续占用一台云服务器。</p></div></section>
+          <section id="choose"><header><span>NODE / 02</span><b>COMPARE</b></header><h2>选择托管路径</h2><div class="matrix"><div class="matrix-head"><span>PATH</span><span>COST</span><span>MAINTENANCE</span></div><div><strong>GitHub Pages</strong><span>FREE</span><span>LOW</span></div><div><strong>Cloud Server</strong><span>PAID</span><span>HIGH</span></div><div><strong>Vercel / Netlify</strong><span>FREE TIER</span><span>LOW</span></div></div></section>
+          <section id="build"><header><span>NODE / 03</span><b>RUN</b></header><h2>执行静态构建</h2><p>每次推送源码后，GitHub Actions 在干净环境中安装依赖、生成静态文件，并把结果交给 Pages 发布。</p><pre><code><span>$</span> npm ci
+<span>$</span> npm run build
+<span>✓</span> static output ready</code></pre></section>
+          <section id="verify"><header><span>NODE / 04</span><b>PASS</b></header><h2>验证最终输出</h2><p>检查域名解析、HTTPS、核心页面和手机阅读体验。每一个绿色状态都应该对应一项可以实际访问的结果。</p><div class="verify-grid"><div><i></i><span>DOMAIN</span><strong>PASS</strong></div><div><i></i><span>HTTPS</span><strong>PASS</strong></div><div><i></i><span>MOBILE</span><strong>PASS</strong></div><div><i></i><span>ROLLBACK</span><strong>READY</strong></div></div></section>
+          <footer class="node-end"><span>END OF NODE 001</span><a href="./">返回信号流 →</a></footer>
+        </article>
+      </div>
+    </main>
+    <footer class="circuit-foot"><span>QUIET CIRCUIT / NODE 001</span><p>AITECHFLOW.CN</p><a href="#article">TOP ↑</a></footer>
+  </body>
+</html>

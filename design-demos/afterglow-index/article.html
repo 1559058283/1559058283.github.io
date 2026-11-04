@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从零开始搭建个人技术博客完整指南" />
+    <title>从零开始搭建个人技术博客 — 余温索引</title>
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="./style.css?v=2" />
+  </head>
+  <body class="article-page">
+    <a class="skip-link" href="#article">跳到正文</a>
+    <header class="site-head"><a class="brand" href="./"><b>LS</b><span>余温索引</span></a><nav aria-label="文章导航"><a href="./">首页</a><a href="#contents">目录</a><a href="#end">下一篇</a></nav><a class="status" href="./">← 返回</a></header>
+    <main id="article">
+      <header class="article-hero page-shell">
+        <div class="article-index"><strong>J.001</strong><span>DEPLOYMENT<br />FIELD GUIDE</span></div>
+        <div class="article-title"><p>教程 / 建站 / 2026-04-20</p><h1>从零开始搭建<br />个人技术博客</h1><p class="article-deck">从域名与源码开始，理解构建、托管和 HTTPS 如何连接成一次完整上线。</p></div>
+        <dl class="article-facts"><div><dt>阅读时间</dt><dd>18 分钟</dd></div><div><dt>难度</dt><dd>第一次建站</dd></div><div><dt>当前方案</dt><dd>GitHub Pages</dd></div></dl>
+      </header>
+
+      <div class="article-layout page-shell">
+        <aside class="article-toc" id="contents"><p>本文目录</p><ol><li><a href="#before"><span>01</span>开始之前</a></li><li><a href="#choose"><span>02</span>选择方案</a></li><li><a href="#build"><span>03</span>生成网站</a></li><li><a href="#verify"><span>04</span>上线验证</a></li></ol><blockquote>更新：本站现在使用 GitHub Pages，无需持续运行云服务器。</blockquote></aside>
+        <article class="prose">
+          <p class="lead">建站不是把一串命令依次执行完。理解域名、源码、构建产物和托管平台各自负责什么，出现问题时才知道应该从哪里检查。</p>
+          <section id="before"><span class="section-no">01 / BEFORE</span><h2>开始之前</h2><p>个人技术博客的内容通常写在 Markdown 文件里，由静态生成器转换为 HTML。最终页面不依赖数据库，因此可以部署到 GitHub Pages 这类静态托管平台。</p><div class="soft-callout"><strong>先做一个选择</strong><p>如果网站只有文章和静态页面，优先选择 GitHub Pages；只有需要后端服务时，再保留云服务器。</p></div></section>
+          <section id="choose"><span class="section-no">02 / DECISION</span><h2>选择部署方案</h2><div class="article-table"><div class="table-head"><span>方案</span><span>维护</span><span>适合</span></div><div><strong>GitHub Pages</strong><span>低</span><span>静态博客</span></div><div><strong>云服务器</strong><span>高</span><span>后端服务</span></div><div><strong>Vercel / Netlify</strong><span>低</span><span>前端应用</span></div></div></section>
+          <section id="build"><span class="section-no">03 / BUILD</span><h2>生成静态网站</h2><p>源码仓库保存主题、配置和 Markdown 文章。每次提交后，自动化任务重新生成公开页面，让源码始终成为唯一可信来源。</p><pre><code># 安装依赖并生成页面
+npm ci
+npm run build
+
+# 在本地检查
+npm run dev</code></pre></section>
+          <section id="verify"><span class="section-no">04 / CHECK</span><h2>上线与验证</h2><p>部署任务显示成功只是第一步。还需要检查自定义域名、HTTPS、首页、文章页与手机布局。</p><ul class="check-list"><li><i>✓</i>核心页面返回正常</li><li><i>✓</i>自定义域名使用 HTTPS</li><li><i>✓</i>手机阅读宽度合理</li><li><i>✓</i>保留可回退版本</li></ul></section>
+          <footer class="article-end" id="end"><p>记录于 2026 年 4 月，随本站方案持续更新。</p><a href="./">返回余温索引 →</a></footer>
+        </article>
+      </div>
+    </main>
+    <footer class="site-foot"><span>JOURNAL 001</span><span>AITECHFLOW.CN</span><a href="#article">回到开头 ↑</a></footer>
+  </body>
+</html>

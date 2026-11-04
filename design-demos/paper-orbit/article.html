@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="从零开始搭建个人技术博客完整指南" />
+    <title>轨道记录 001 — 纸上星轨</title>
+    <link rel="stylesheet" href="../shared/common.css" />
+    <link rel="stylesheet" href="./style.css?v=4" />
+  </head>
+  <body class="orbit-article-page">
+    <a class="skip-link" href="#article">跳到正文</a>
+    <header class="orbit-head"><a class="orbit-brand" href="./"><span class="brand-orbit"><i></i></span><b>LS / PAPER ORBIT</b></a><nav aria-label="文章导航"><a href="./">首页</a><a href="#contents">目录</a><a href="#check">验证</a></nav><a class="head-note" href="./">← RETURN</a></header>
+
+    <main id="article">
+      <header class="article-orbit-hero orbit-shell">
+        <div class="article-sigil"><span>ORBIT NOTE</span><strong>001</strong><i></i></div>
+        <div class="article-title"><p>DEPLOYMENT / GUIDE / 2026.04.20</p><h1>从零开始搭建<br />个人技术博客</h1><p>让域名、源码、构建与发布进入一条稳定轨道。</p></div>
+        <div class="article-tags"><span>HEXO</span><span>GITHUB PAGES</span><span>HTTPS</span><span>18 MIN</span></div>
+      </header>
+
+      <div class="orbit-article-layout orbit-shell">
+        <aside class="orbit-toc" id="contents"><div class="toc-ring"><span>READ</span><strong>04</strong><i></i></div><ol><li><a href="#prepare"><span>01</span>准备</a></li><li><a href="#route"><span>02</span>选择路径</a></li><li><a href="#build"><span>03</span>开始构建</a></li><li><a href="#check"><span>04</span>完成验证</a></li></ol><a href="./">← 回到首页</a></aside>
+        <article class="orbit-prose">
+          <p class="orbit-lead">一个个人网站不需要从复杂开始。先让最小的内容路径稳定运行，再逐步加入主题、评论和更丰富的页面。</p>
+          <section id="prepare"><span class="orbit-section-no">01 / PREPARE</span><h2>准备第一圈轨道</h2><p>域名负责让人找到网站，仓库保存文章和配置，静态生成器把 Markdown 转成 HTML。把这三个角色分清，后面的选择会简单很多。</p><aside class="margin-card"><b>当前选择</b><p>本站已经使用 GitHub Pages，不再依赖持续运行的云服务器。</p></aside></section>
+          <section id="route"><span class="orbit-section-no">02 / CHOOSE</span><h2>选择发布路径</h2><p>静态博客更适合交给静态托管平台。云服务器拥有更多自由，但也需要承担系统维护、证书更新与故障处理。</p><div class="route-cards"><article><span>推荐</span><strong>GitHub Pages</strong><p>免费、自动部署，适合静态博客。</p></article><article><span>需要后端时</span><strong>云服务器</strong><p>自由度高，也需要持续维护。</p></article></div></section>
+          <section id="build"><span class="orbit-section-no">03 / BUILD</span><h2>让内容自动抵达</h2><p>构建任务应该从干净环境开始，安装依赖、生成页面，再发布到 Pages。这样本地与线上使用同一套过程。</p><pre><code><span>01</span> npm ci
+<span>02</span> npm run build
+<span>03</span> deploy to GitHub Pages</code></pre></section>
+          <section id="check"><span class="orbit-section-no">04 / VERIFY</span><h2>确认轨道闭合</h2><p>访问最终域名，逐项检查首页、文章、HTTPS 和移动端。部署状态与真实访问结果都正常，才算完成。</p><ul class="orbit-checks"><li><i></i><span>首页与文章页</span><b>PASS</b></li><li><i></i><span>HTTPS 与域名</span><b>PASS</b></li><li><i></i><span>手机阅读体验</span><b>PASS</b></li></ul></section>
+          <footer class="orbit-article-end"><span>TRAJECTORY SAVED / 2026.04</span><a href="./">继续探索 →</a></footer>
+        </article>
+      </div>
+    </main>
+    <footer class="orbit-foot"><span>ORBIT NOTE 001</span><span>AITECHFLOW.CN</span><a href="#article">BACK TO TOP ↑</a></footer>
+  </body>
+</html>

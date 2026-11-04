@@ -63,6 +63,53 @@
         gap: 24px;
       }
 
+      .round-heading {
+        display: grid;
+        grid-template-columns: 160px minmax(0, 1fr) minmax(260px, 0.7fr);
+        gap: 28px;
+        align-items: end;
+        margin: 66px 0 26px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(17, 19, 24, 0.22);
+      }
+
+      .round-heading > span {
+        color: #315efb;
+        font: 700 10px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.08em;
+      }
+
+      .round-heading h2 {
+        margin: 0;
+        font-size: clamp(30px, 4vw, 50px);
+      }
+
+      .round-heading p {
+        margin: 0;
+        color: #68707d;
+        line-height: 1.65;
+      }
+
+      .round-two {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .round-two .preview {
+        height: 380px;
+      }
+
+      .round-two .demo-copy {
+        grid-template-columns: 42px minmax(0, 1fr);
+      }
+
+      .round-two .actions {
+        grid-column: 2;
+      }
+
+      .round-two .demo-card:nth-child(1) { box-shadow: 0 20px 50px rgba(229, 93, 63, 0.13); }
+      .round-two .demo-card:nth-child(2) { box-shadow: 0 20px 50px rgba(20, 43, 37, 0.13); }
+      .round-two .demo-card:nth-child(3) { box-shadow: 0 20px 50px rgba(112, 92, 232, 0.14); }
+
       .demo-card {
         overflow: hidden;
         border: 1px solid rgba(17, 19, 24, 0.13);
@@ -151,12 +198,21 @@
 
       @media (max-width: 980px) {
         .overview-header,
-        .demo-grid {
+        .demo-grid,
+        .round-two {
           grid-template-columns: 1fr;
         }
 
         .overview-header {
           gap: 24px;
+        }
+
+        .round-heading {
+          grid-template-columns: 110px 1fr;
+        }
+
+        .round-heading p {
+          grid-column: 2;
         }
       }
 
@@ -182,6 +238,14 @@
         .note {
           flex-direction: column;
         }
+
+        .round-heading {
+          grid-template-columns: 1fr;
+        }
+
+        .round-heading p {
+          grid-column: 1;
+        }
       }
     </style>
   </head>
@@ -189,13 +253,46 @@
     <main class="overview">
       <header class="overview-header">
         <div>
-          <p class="kicker">aitechflow.cn / redesign study</p>
-          <h1>四种方向，<br />同一份真实内容。</h1>
+          <p class="kicker">aitechflow.cn / redesign study · round 02</p>
+          <h1>参考余白，<br />但不复制余白。</h1>
         </div>
         <p class="intro">
-          这些原型都围绕 LS 的后端开发、AI 工程实践与建站记录展开。每套包含首页和长文页，用来比较品牌感、信息层级与阅读体验。
+          第二轮保留 Innei / Yohaku 的温暖阅读感，再分别改变布局、色彩、内容组织和动效逻辑。每套仍包含首页和长文页。
         </p>
       </header>
+
+      <div class="round-heading"><span>ROUND 02 / NEW</span><h2>基于你选中的方向</h2><p>三套使用同一份真实内容，可以直接比较整体气质和文章阅读体验。</p></div>
+
+      <section class="demo-grid round-two" aria-label="第二轮设计方向">
+        <article class="demo-card">
+          <div class="preview"><iframe src="./afterglow-index/" title="余温索引首页预览" loading="eager"></iframe></div>
+          <div class="demo-copy">
+            <span class="number">A</span>
+            <div><h2>余温索引</h2><p>温暖纸张、杂志式日期与人物档案。最接近 Innei 的舒适感，但信息架构完全重做。</p></div>
+            <div class="actions"><a href="./afterglow-index/">首页</a><a href="./afterglow-index/article.html">文章页</a></div>
+          </div>
+        </article>
+
+        <article class="demo-card">
+          <div class="preview"><iframe src="./quiet-circuit/" title="静默回路首页预览" loading="lazy"></iframe></div>
+          <div class="demo-copy">
+            <span class="number">B</span>
+            <div><h2>静默回路</h2><p>灰绿工程网格、固定身份档案与节点式内容流。技术辨识度最强，也最不像传统博客。</p></div>
+            <div class="actions"><a href="./quiet-circuit/">首页</a><a href="./quiet-circuit/article.html">文章页</a></div>
+          </div>
+        </article>
+
+        <article class="demo-card">
+          <div class="preview"><iframe src="./paper-orbit/" title="纸上星轨首页预览" loading="lazy"></iframe></div>
+          <div class="demo-copy">
+            <span class="number">C</span>
+            <div><h2>纸上星轨</h2><p>柔和纸色、成长轨迹与圆形视觉系统。更年轻、更有个人气质，适合扩展生活内容。</p></div>
+            <div class="actions"><a href="./paper-orbit/">首页</a><a href="./paper-orbit/article.html">文章页</a></div>
+          </div>
+        </article>
+      </section>
+
+      <div class="round-heading"><span>ROUND 01 / ARCHIVE</span><h2>第一轮方向保留</h2><p>用于对照技术感、编辑感和作品集表达，不会影响第二轮选择。</p></div>
 
       <section class="demo-grid" aria-label="设计方向">
         <article class="demo-card">
@@ -237,7 +334,7 @@
 
       <footer class="note">
         <span>当前线上站点保持不变，原型仅存在于 redesign-demos 分支。</span>
-        <span>建议分别查看首页和文章页，并缩放到手机宽度。</span>
+        <span>建议先看第二轮 A、B、C 的首页，再分别打开文章页比较阅读体验。</span>
       </footer>
     </main>
   </body>
