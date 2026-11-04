@@ -8,103 +8,91 @@
 | --- | --- |
 | 生产网站 | <https://aitechflow.cn> |
 | `www` 地址 | <https://www.aitechflow.cn>，自动跳转到主域名 |
-| GitHub 仓库 | <https://github.com/1559058283/1559058283.github.io> |
-| 发布分支 | `main` |
-| GitHub Pages 发布目录 | 仓库根目录 `/` |
+| Hexo 源码仓库 | <https://github.com/1559058283/blog>，`main` 分支 |
+| 生产发布仓库 | <https://github.com/1559058283/1559058283.github.io>，`main` 分支 |
+| GitHub Pages 发布目录 | 生产发布仓库根目录 `/` |
 | 站点生成器 | Hexo 6.3.0 |
 | 主题 | Butterfly 5.5.5-b1 |
 | 评论仓库 | `1559058283/aitechflow-comments` |
 
 网站已从腾讯云服务器迁移到 GitHub Pages。域名访问、静态文件发布和 HTTPS 均由 GitHub Pages 提供，不再依赖旧服务器上的 Nginx 或网站目录。
 
-## 2. 必须先理解的限制
+正常维护链路是：在 `blog` 仓库修改 Markdown、配置或主题，生成 `public/`，检查后把生成结果发布到 `1559058283.github.io`。两个仓库用途不同，当前都不能删除。
 
-当前仓库只有 Hexo 生成后的 HTML、CSS、JavaScript、图片、XML 和站点地图，**没有原始 Hexo 工程**。以下源码文件目前不存在：
+## 2. 必须先理解的仓库分工
 
-- `package.json`
-- `_config.yml`
-- `_config.butterfly.yml`
-- `source/`
-- `themes/`
+`blog` 是完整的 Hexo 工程，包含 `package.json`、站点和 Butterfly 配置、`source/` 文章原稿以及主题源码。它不是可删除的旧备份，而是网站内容的事实来源。
 
-因此：
+`1559058283.github.io` 只有生成后的 HTML、CSS、JavaScript、图片、XML 和站点地图；它负责当前线上发布，不应当作为文章和主题的长期编辑位置。
 
-- 修改少量文字、样式、图片或已有页面时，可以直接编辑静态文件。
-- 新增文章、修改导航、标签、分类、归档、RSS、搜索索引或全站主题配置时，应先找回或重建 Hexo 源码工程，再重新生成整站。
-- 不要在当前仓库里直接执行 `hexo generate`，也不要凭空创建一套配置覆盖现有网站。
-- 直接修改文章 HTML 时，还要同步检查首页、归档、标签、分类、`search.xml`、`atom.xml`、`sitemap.xml` 和 `sitemap.txt`，否则不同页面的数据会不一致。
+当前还有一个自动化缺口：`blog/.github/workflows/deploy.yml` 只把生成结果推到 **`blog` 仓库自己的 `gh-pages` 分支**，不会更新生产仓库 `1559058283.github.io`。在工作流改造完成前，不能把“推送 `blog/main` 成功”当作生产网站已经更新。
 
-## 3. 不能删除的文件
+## 3. 不能删除或泄露的内容
 
-- `CNAME`：内容必须是 `aitechflow.cn`。删除或改错会导致自定义域名失效。
-- `.nojekyll`：让 GitHub Pages 原样发布当前静态文件。
-- 现有目录结构：页面大量使用以 `/` 开头的绝对路径，随意移动文件会造成资源 404。
+- 生产仓库的 `CNAME`：内容必须是 `aitechflow.cn`。删除或改错会导致自定义域名失效。
+- 生产仓库的 `.nojekyll`：让 GitHub Pages 原样发布当前静态文件。
+- `blog` 源码仓库：它保存文章原稿、配置和主题源码。
+- 现有 URL 和资源目录结构：页面使用根路径链接，随意移动会造成 404。
 
-仓库是公开的。禁止提交 SSH 私钥、GitHub Token、腾讯云凭据、密码、Cookie、服务器配置备份或任何其他秘密。
+仓库中禁止提交 SSH 私钥、GitHub Token、腾讯云凭据、密码、Cookie、服务器配置备份或任何其他秘密。
 
-## 4. 日常小改流程
+## 4. 日常维护流程
 
-适用于更换图片、调整 CSS、修正文案或修改一个已有页面。
+文章、导航、样式、图片和主题配置都优先在源码仓库修改：
 
 ```bash
-git clone https://github.com/1559058283/1559058283.github.io.git
-cd 1559058283.github.io
+git clone https://github.com/1559058283/blog.git
+cd blog
 git pull --ff-only
 git status --short --branch
+npm ci
+(cd themes/hexo-theme-butterfly && npm install)
+npx hexo clean
+npx hexo generate
+npx hexo server
 ```
 
-修改时遵守以下规则：
-
-1. 只改完成任务需要的文件。
-2. 不要格式化或重写全部生成 HTML，以免产生无法审查的大型差异。
-3. 图片尽量沿用原文件名和路径；需要新增时放入合适的 `img/` 子目录。
-4. 修改公共结构或评论配置时，搜索所有生成页面，确认是否需要同步修改多处。
-5. 保留 `CNAME` 和 `.nojekyll`。
-
-本地预览：
-
-```bash
-python3 -m http.server 8000
-```
-
-然后访问 <http://127.0.0.1:8000/>。发布前至少检查首页、修改过的页面、图片、导航、移动端布局和浏览器控制台。
-
-提交与发布：
+访问 <http://127.0.0.1:4000/>，至少检查首页、修改过的页面、图片、导航、移动端布局和浏览器控制台。确认无误后，提交源码仓库：
 
 ```bash
 git diff --check
 git status --short
 git diff
-git add <本次修改的文件>
+git add <本次修改的源文件>
 git commit -m "说明本次修改"
 git push origin main
 ```
 
-推送到 `main` 后，GitHub Pages 会自动构建和发布。不要再把文件同步到旧云服务器。
+在自动发布链路改造完成前，还要把生成后的 `public/` 发布到 `1559058283.github.io` 的 `main` 根目录。发布时遵守以下规则：
 
-## 5. 新增文章或全站改版流程
+1. 保留生产仓库的 `.git/`、`README.md`、`CNAME` 和 `.nojekyll`。
+2. 生成文件可能大量变化，发布前必须检查完整差异，避免误删页面或静态资源。
+3. 在生产仓库提交并推送 `main` 后，等待 GitHub Pages 构建完成并做线上验证。
+4. 不要再把文件同步到旧云服务器。
 
-这类任务不要直接拼接生成后的 HTML。推荐流程：
+只有生产故障需要立即热修复时，才直接编辑生成后的 HTML 或 CSS；随后必须把同一修复补回 `blog` 源码，否则下次生成会覆盖它。
 
-1. 先寻找原始 Hexo 源码备份；可能位于旧电脑、旧服务器、网盘或另一个 GitHub 仓库。
-2. 如果确实找不到，在独立目录或独立私有仓库中重建 Hexo 6.3.0 与 Butterfly 5.5.5-b1 工程。
-3. 从当前网站反向整理文章 Markdown、页面内容、图片和主题配置。
-4. 本地执行 `npm ci`、`npx hexo clean`、`npx hexo generate` 和 `npx hexo server`。
-5. 对比生成结果与当前网站，确认 URL、导航、评论、SEO、RSS、搜索和站点地图正常。
-6. 将生成的 `public/` 内容发布到本仓库根目录，同时保留正确的 `CNAME` 和 `.nojekyll`。
-7. 先审查完整差异，再提交和推送。
+## 5. 新增文章或全站改版
 
-不要直接使用带 `--delete` 的同步命令覆盖仓库根目录，除非已经明确保护 `CNAME`、`.nojekyll` 和维护文档。
+不要直接拼接生成后的 HTML。推荐流程：
+
+1. 在 `blog` 仓库修改 `source/`、`_config.yml`、`_config.butterfly.yml` 或主题源码。
+2. 本地生成并预览。
+3. 对比生成结果与当前网站，确认 URL、导航、评论、SEO、RSS、搜索和站点地图正常。
+4. 先提交源码，再将 `public/` 发布到生产仓库，同时保留正确的 `README.md`、`CNAME` 和 `.nojekyll`。
+5. 审查生产仓库完整差异，提交并推送，等待 Pages 发布后做线上验证。
+
+长期建议把 `blog` 的工作流改为自动更新生产仓库，或把自定义域名完整迁移到 `blog` 自己的 Pages。完成切换并验证前，不要删除任一仓库。
 
 ## 6. GitHub Pages 与 DNS
 
 GitHub Pages 当前使用：
 
 - 自定义域名：`aitechflow.cn`
-- Pages 来源：`main` 分支的 `/`
+- Pages 来源：`1559058283.github.io` 的 `main` 分支根目录
 - HTTPS：已启用并强制跳转
 
-DNS 由 DNSPod 管理，当前记录为：
+DNS 由 DNSPod 管理，迁移时设置的记录为：
 
 | 主机记录 | 类型 | 记录值 | TTL |
 | --- | --- | --- | --- |
@@ -112,9 +100,7 @@ DNS 由 DNSPod 管理，当前记录为：
 | `@` | `A` | `185.199.109.153` | `600` |
 | `www` | `CNAME` | `1559058283.github.io` | `600` |
 
-DNSPod 免费版对相同主机记录的负载均衡条数有限制，所以根域名保留了两条 GitHub Pages A 记录。GitHub Pages 支持根域名使用至少一条有效 A 记录。
-
-除非任务明确要求修改域名，否则不要改 DNS。修改前必须重新查询当前记录，修改后要等待缓存传播并检查 HTTPS 证书状态。不要把根域名或 `www` 改回旧服务器地址。
+DNSPod 免费版对相同主机记录的负载均衡条数有限制，所以根域名保留了两条 GitHub Pages A 记录。除非任务明确要求修改域名，否则不要改 DNS。修改前必须重新查询当前记录，修改后要等待缓存传播并检查 HTTPS 证书状态。
 
 ## 7. 发布后验证
 
@@ -126,8 +112,6 @@ gh api repos/1559058283/1559058283.github.io/pages \
 
 gh api repos/1559058283/1559058283.github.io/pages/health
 ```
-
-`pages/health` 第一次调用可能只启动异步检测并返回空结果；稍等片刻后再查询一次即可。
 
 再检查线上请求：
 
@@ -141,18 +125,11 @@ curl -fsS -o /dev/null -w '%{http_code}\n' \
 期望结果：
 
 - `https://aitechflow.cn/` 返回 `200`，响应头包含 `server: GitHub.com`。
-- `http://aitechflow.cn/` 跳转到 HTTPS。
-- `https://www.aitechflow.cn/` 跳转到 `https://aitechflow.cn/`。
-- GitHub Pages 状态为 `built`。
+- HTTP 自动跳转到 HTTPS。
+- `www` 自动跳转到主域名。
+- Pages 状态为 `built`。
 - `https_enforced` 为 `true`，证书状态为 `approved`。
 - 修改过的页面和资源均无 404。
-
-公网 DNS 可以通过 Google DNS over HTTPS 检查：
-
-```bash
-curl -sS 'https://dns.google/resolve?name=aitechflow.cn&type=A'
-curl -sS 'https://dns.google/resolve?name=www.aitechflow.cn&type=CNAME'
-```
 
 ## 8. 回滚
 
@@ -164,7 +141,7 @@ git revert <有问题的提交>
 git push origin main
 ```
 
-等待 GitHub Pages 重新发布后，再检查首页、问题页面、`www` 跳转和 HTTPS。
+如果一次发布同时修改了源码仓库和生产仓库，应分别回滚对应提交。等待 GitHub Pages 重新发布后，再检查首页、问题页面、`www` 跳转和 HTTPS。
 
 ## 9. 旧腾讯云服务器
 
@@ -184,15 +161,15 @@ git push origin main
 
 每次维护时，AI 应按以下顺序工作：
 
-1. 拉取最新 `main`，检查工作区和最近提交。
-2. 确认任务属于“小改静态文件”还是“需要 Hexo 源码的全站修改”。
+1. 拉取两个仓库的最新分支，检查工作区和最近提交。
+2. 默认在 `blog` 源码仓库修改；只有生产故障热修复时才直接改生成文件。
 3. 做最小范围修改，并展示可审查的差异。
-4. 本地预览并检查受影响页面。
-5. 确认 `CNAME`、`.nojekyll` 和公开仓库安全边界未被破坏。
-6. 提交并推送到 `main`。
+4. 在源码仓库生成并本地预览，检查受影响页面。
+5. 提交源码，再把同一生成结果发布到生产仓库。
+6. 确认 `README.md`、`CNAME`、`.nojekyll` 和公开仓库安全边界未被破坏。
 7. 等待 GitHub Pages 构建完成。
 8. 验证主域名、`www`、HTTPS 和受影响页面。
-9. 向用户报告提交哈希、部署状态、验证结果和仍存在的限制。
+9. 向用户报告两个仓库的提交哈希、部署状态、验证结果和仍存在的限制。
 
 如果现状和本文冲突，以实时检查结果为准，并在同一提交中更新本文。
 
