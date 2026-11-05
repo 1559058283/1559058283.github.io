@@ -1,0 +1,247 @@
+/* =====================================================================
+   浅色渐变三套色系（给 html 加 data-pal="dawn|celadon|dusk" 切换）
+   共同原则
+     · 饱和度压到 12–22%，高级感来自低饱和而非鲜艳
+     · 三色一组：暖端 → 中间色 → 冷端，走色轮的短弧不是对冲
+     · 文字色和背景永远 ≥ 7:1 对比，渐变只在背景层
+     · 不用紫蓝对冲（那是 AI 生成设计最典型的脸）
+   ===================================================================== */
+
+/* ===== H1「晨光」：暖米白 → 淡蜜桃 → 柔和天青 ===== */
+/* 像清晨六点的光斜落在纸上，暖到冷的短弧过渡 */
+html[data-pal="dawn"]{
+  --bg:#f4f0e9; --bg2:#ece7de; --paper:#faf8f3;
+  --ink:#2b2724; --ink2:#6b635c; --ink3:#9d958c; --gut:#bdb5ab;
+  --kw:#744c32;            /* 赭石（压深至对比 6.5，渐变浓处仍 5.5）*/
+  --str:#55663f;           /* 橄榄 */
+  --cm:#a8a097;
+  --h1:#6e4f60;            /* 灰紫 */
+  --ok:#4f6a48; --red:#8f4536;
+  --gl:rgba(253,251,247,.56); --gl2:rgba(253,251,247,.74); --gl3:rgba(253,251,247,.44);
+  --hi:rgba(255,255,255,.94); --ed:rgba(43,39,36,.1); --ed2:rgba(43,39,36,.05);
+  --sh:0 1px 2px rgba(43,39,36,.04),0 18px 48px rgba(43,39,36,.08);
+  --hov:rgba(255,255,255,.52);
+  /* 渐变三色：蜜桃 → 杏 → 天青 */
+  --p1:rgba(228,178,150,.46);
+  --p2:rgba(222,196,164,.4);
+  --p3:rgba(168,190,206,.42);
+  --pdeep:#e8dccb;         /* 渐变最深处：暖杏 */
+}
+
+/* ===== H2「青瓷」：米白 → 淡青瓷绿 → 灰蓝 ===== */
+/* 宋瓷釉色，清冷但不冰，最耐看 */
+html[data-pal="celadon"]{
+  --bg:#eef0ea; --bg2:#e4e8e0; --paper:#f7f9f5;
+  --ink:#232825; --ink2:#5c6560; --ink3:#919a94; --gut:#b2bab4;
+  --kw:#355a52;            /* 青瓷（压深至对比 6.7）*/
+  --str:#4a6640;
+  --cm:#98a19b;
+  --h1:#4e5f70;
+  --ok:#3f6650; --red:#86463a;
+  --gl:rgba(250,252,249,.56); --gl2:rgba(250,252,249,.74); --gl3:rgba(250,252,249,.44);
+  --hi:rgba(255,255,255,.94); --ed:rgba(35,40,37,.1); --ed2:rgba(35,40,37,.05);
+  --sh:0 1px 2px rgba(35,40,37,.04),0 18px 48px rgba(35,40,37,.08);
+  --hov:rgba(255,255,255,.52);
+  --p1:rgba(166,200,190,.48);
+  --p2:rgba(186,206,196,.4);
+  --p3:rgba(160,182,198,.44);
+  --pdeep:#d6e0da;
+}
+
+/* ===== H3「晚樱」：奶白 → 灰粉 → 薰衣草 ===== */
+/* 暮色里的樱花，最柔，适合想要温度的站 */
+html[data-pal="dusk"]{
+  --bg:#f2eeee; --bg2:#eae5e6; --paper:#faf7f7;
+  --ink:#2a2528; --ink2:#67605f; --ink3:#9a918f; --gut:#bab2b0;
+  --kw:#6b4256;            /* 梅红（压深至对比 7.2）*/
+  --str:#4f6246;
+  --cm:#a39a98;
+  --h1:#5c5074;
+  --ok:#466a4d; --red:#8c3f45;
+  --gl:rgba(253,250,250,.56); --gl2:rgba(253,250,250,.74); --gl3:rgba(253,250,250,.44);
+  --hi:rgba(255,255,255,.94); --ed:rgba(42,37,40,.1); --ed2:rgba(42,37,40,.05);
+  --sh:0 1px 2px rgba(42,37,40,.04),0 18px 48px rgba(42,37,40,.08);
+  --hov:rgba(255,255,255,.52);
+  --p1:rgba(216,178,186,.46);
+  --p2:rgba(206,188,200,.4);
+  --p3:rgba(176,172,202,.42);
+  --pdeep:#e4d8dc;
+}
+
+/* =====================================================================
+   浅色封面：没有暗面，靠「光的浓淡」分区
+   右侧 1/3 是色彩最浓处，向左渐隐到纸白
+   ===================================================================== */
+.sec-cover{position:relative;min-height:100vh;overflow:hidden;
+  display:grid;place-items:center;padding:90px 0 40px;}
+
+/* 色彩浓区：右侧 1/3 */
+.wash{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(104deg,
+    transparent 46%,
+    color-mix(in srgb,var(--pdeep) 40%,transparent) 60%,
+    color-mix(in srgb,var(--pdeep) 78%,transparent) 72%,
+    var(--pdeep) 86%);}
+
+/* Aurora 光团：去掉代码壁纸后，光要撑起整个背景
+   五团、更大半径、更重模糊 —— 低饱和才是「高级」的关键 */
+.wash-aur{position:absolute;inset:-22%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(40% 50% at 74% 20%,var(--p1),transparent 66%),
+    radial-gradient(36% 44% at 86% 66%,var(--p3),transparent 68%),
+    radial-gradient(32% 38% at 62% 48%,var(--p2),transparent 70%),
+    radial-gradient(30% 40% at 24% 74%,var(--p2),transparent 72%),
+    radial-gradient(26% 34% at 12% 24%,var(--p1),transparent 74%);
+  filter:blur(56px);
+  animation:wa 30s ease-in-out infinite alternate;}
+@keyframes wa{to{transform:translate3d(-3%,2.5%,0) scale(1.07);}}
+
+/* 发丝分界：一道极淡的斜线，暗示结构而不切断 */
+.wash::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(104deg,transparent 59%,
+    rgba(255,255,255,.5) 60%,transparent 61%);}
+
+/* 注：原先这里有巨幅代码壁纸，已移除 ——
+   它和标题抢视线，背景只留光更清爽。 */
+
+/* CLI 框：标题居中后它要让位 —— ≥1280px 笔记本宽屏可见 */
+.cli{display:none;}
+@media (min-width:1280px){
+  .cli{display:block;position:absolute;z-index:1;right:2.5%;bottom:7%;
+    font-family:var(--mono);font-size:10px;line-height:1.72;white-space:pre;
+    color:color-mix(in srgb,var(--ink) 30%,transparent);
+    pointer-events:none;user-select:none;text-align:left;}
+}
+.cli-base{
+  font-family:var(--mono);line-height:1.74;white-space:pre;
+  color:color-mix(in srgb,var(--ink) 34%,transparent);
+  pointer-events:none;user-select:none;}
+.cli .mk{color:color-mix(in srgb,var(--ink) 62%,transparent);}
+.cli .dim{color:color-mix(in srgb,var(--ink) 18%,transparent);}
+.cli .ac{color:var(--kw);}
+
+/* ===== 封面内容：整块居中 ===== */
+.cvr{text-align:center;}
+.cvr .sub{max-width:none;margin-left:auto;margin-right:auto;}
+.cvr .mt{justify-content:center;display:flex;gap:14px;flex-wrap:wrap;}
+.cv-stats{margin-left:auto;margin-right:auto;}
+.cvr .acts{justify-content:center;}
+
+/* 标题：浅色系不需要反色层，整条用主色 */
+.tt-wrap{position:relative;width:fit-content;margin:0 auto;}
+.tt-wrap h1{font-family:var(--mono);font-weight:500;letter-spacing:-.045em;line-height:1;
+  font-size:clamp(38px,8.4vw,104px);white-space:nowrap;margin:0;color:var(--ink);}
+.tt-wrap h1 .br{color:var(--ink3);font-weight:300;}
+.tt-wrap h1 .us{color:var(--kw);}
+.tt-wrap h1 .cur{display:inline-block;width:.5em;height:.86em;background:var(--kw);
+  margin-left:.08em;vertical-align:-.04em;animation:cb 1.05s steps(1) infinite;}
+@keyframes cb{50%{opacity:0;}}
+.tt-wrap h1.inv{display:none;}  /* 浅色系用不上反色层 */
+
+/* ===== 页尾：浅色系用「色彩最浓」收尾，不用暗带 ===== */
+.footer-band{position:relative;margin-top:60px;padding:54px 0 48px;overflow:hidden;}
+.footer-band::before{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(104deg,
+    color-mix(in srgb,var(--pdeep) 55%,transparent) 0,
+    color-mix(in srgb,var(--pdeep) 85%,transparent) 48%,
+    var(--pdeep) 100%);}
+.footer-band::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;z-index:1;
+  background:linear-gradient(104deg,transparent,var(--hi) 28%,var(--hi) 72%,transparent);}
+/* 页尾里的 Aurora，和封面呼应 */
+.footer-band .fb-aur{position:absolute;inset:-40%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(30% 50% at 24% 30%,var(--p1),transparent 66%),
+    radial-gradient(26% 44% at 76% 70%,var(--p3),transparent 68%);
+  filter:blur(46px);}
+
+.fb{position:relative;z-index:2;max-width:1340px;margin:0 auto;padding:0 22px;
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:end;}
+.fb .say{font-family:var(--mono);font-size:clamp(17px,2.1vw,26px);font-weight:500;
+  line-height:1.5;letter-spacing:-.02em;color:var(--ink);}
+.fb .say .pr{color:var(--kw);}
+.fb .say .cur{display:inline-block;width:.46em;height:.84em;background:var(--kw);
+  margin-left:.1em;vertical-align:-.04em;animation:cb 1.05s steps(1) infinite;}
+.fb .meta{margin-top:16px;font-family:var(--mono);font-size:11.5px;color:var(--ink3);
+  display:flex;gap:16px;flex-wrap:wrap;}
+.fb .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+.fb .cols h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+  color:var(--ink3);margin-bottom:10px;}
+.fb .cols a{display:block;padding:3px 0;font-size:13px;color:var(--ink2);
+  transition:color .18s,padding-left .18s;}
+.fb .cols a:hover{color:var(--kw);padding-left:3px;}
+.fb .cr{grid-column:1/-1;margin-top:30px;padding-top:18px;font-family:var(--mono);
+  font-size:11px;color:var(--ink3);border-top:1px solid var(--ed);
+  display:flex;gap:16px;flex-wrap:wrap;}
+.fb .cr .r{margin-left:auto;}
+.fb .cr a{color:inherit;}
+.fb .cr a:hover{color:var(--kw);}
+
+/* 全页 Aurora（浅色版）
+   --mx/--my 由 JS 写入：光跟鼠标微移，玻璃才像有光源照着 */
+.aurora-page{position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+  --mx:50%; --my:40%;
+  background:
+    radial-gradient(28% 34% at calc(80% + (var(--mx) - 50%) * .12)
+      calc(12% + (var(--my) - 50%) * .1),var(--p1),transparent 66%),
+    radial-gradient(24% 30% at calc(16% + (var(--mx) - 50%) * .08)
+      calc(54% + (var(--my) - 50%) * .12),var(--p2),transparent 68%),
+    radial-gradient(22% 26% at calc(74% + (var(--mx) - 50%) * .1)
+      calc(88% + (var(--my) - 50%) * .08),var(--p3),transparent 70%);
+  filter:blur(50px);opacity:.55;
+  transition:background .5s cubic-bezier(.22,.8,.3,1);
+  animation:wa 36s ease-in-out infinite alternate;}
+
+/* 卡片筛选：淡出淡入而非硬切 */
+.pcard{transition:transform .28s cubic-bezier(.25,.8,.3,1),box-shadow .28s ease,
+  background .3s,opacity .32s ease;}
+.pcard.hide{opacity:0;transform:scale(.97);pointer-events:none;}
+
+/* 导航当前段高亮：底部一道主色细线 */
+.top nav a{position:relative;}
+.top nav a.here::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;
+  height:1.5px;border-radius:2px;background:var(--kw);
+  animation:lin .3s cubic-bezier(.22,.9,.3,1);}
+@keyframes lin{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+/* ===== 色系切换器（demo 用） ===== */
+.pal-pick{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;gap:6px;
+  padding:7px;border-radius:999px;background:var(--gl2);border:1px solid var(--ed);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:var(--sh);}
+.pal-pick button{width:26px;height:26px;border-radius:50%;cursor:pointer;
+  border:1px solid var(--ed);transition:transform .18s,box-shadow .18s;}
+.pal-pick button:hover{transform:scale(1.12);}
+.pal-pick button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink);}
+.pal-pick .p-dawn{background:linear-gradient(135deg,#f4f0e9,#e4b296 60%,#a8bece);}
+.pal-pick .p-celadon{background:linear-gradient(135deg,#eef0ea,#a6c8be 60%,#a0b6c6);}
+.pal-pick .p-dusk{background:linear-gradient(135deg,#f2eeee,#d8b2ba 60%,#b0acca);}
+
+@media (max-width:1100px){
+  .wash{background:linear-gradient(104deg,transparent 54%,
+    color-mix(in srgb,var(--pdeep) 42%,transparent) 66%,
+    color-mix(in srgb,var(--pdeep) 80%,transparent) 78%,var(--pdeep) 90%);}
+  .wash::after{background:linear-gradient(104deg,transparent 65%,
+    rgba(255,255,255,.5) 66%,transparent 67%);}
+  .cli{font-size:9.5px;right:2%;}
+}
+@media (max-width:760px){
+  .sec-cover{min-height:90vh;padding:76px 0 36px;align-items:start;}
+  .wash{background:linear-gradient(183deg,transparent 40%,
+    color-mix(in srgb,var(--pdeep) 45%,transparent) 58%,
+    color-mix(in srgb,var(--pdeep) 82%,transparent) 74%,var(--pdeep) 90%);}
+  .wash::after{background:linear-gradient(183deg,transparent 56%,
+    rgba(255,255,255,.45) 57%,transparent 58%);}
+  .wash-aur{background:
+    radial-gradient(54% 28% at 50% 54%,var(--p1),transparent 66%),
+    radial-gradient(46% 24% at 66% 78%,var(--p3),transparent 68%);}
+  .tt-wrap{width:auto;}
+  .tt-wrap h1{white-space:normal;font-size:clamp(32px,10.5vw,48px);}
+  .cli{position:static;transform:none;margin-top:32px;font-size:10px;}
+  .footer-band{margin-top:44px;padding:40px 0 36px;}
+  .fb{grid-template-columns:1fr;gap:28px;padding:0 16px;}
+  .fb .cr{margin-top:22px;}
+  .fb .cr .r{margin-left:0;width:100%;}
+  .pal-pick{right:12px;bottom:12px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .wash-aur,.aurora-page,.tt-wrap h1 .cur,.fb .say .cur{animation:none;}
+}

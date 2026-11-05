@@ -36,6 +36,12 @@ highlight:
 
 theme: hexo-theme-butterfly
 
+# 首页是单页壳，不要再拆成 /page/2/
+index_generator:
+  path: ''
+  per_page: 0
+  order_by: -date
+
 deploy:
   type: ''
 

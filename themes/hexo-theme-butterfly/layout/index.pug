@@ -1,5 +1,3 @@
-extends includes/layout.pug
-
-block content
-  include ./includes/mixins/indexPostUI.pug
-  +indexPostUI
+//- 首页使用站点侧的浅色极光壳（source/_h/home.pug）。
+//- 文章、归档、分类、标签、RSS 仍走 Butterfly 自己的布局。
+include ../../../source/_h/home.pug

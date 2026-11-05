@@ -19,12 +19,8 @@ nav:
 
 menu:
   主页: / || fas fa-home
-  文章: /archives/ || fas fa-archive
-  生活: /categories/生活/ || fas fa-heart
-  友链: /link/ || fas fa-link
-  留言板: /comments/ || fas fa-comments
-  关于笔者: /about/ || fas fa-user
-  搜索: /search/ || fas fa-search
+  文章: /#posts || fas fa-book-open
+  关于笔者: /#whoami || fas fa-user
 
 # --------------------------------------
 # Code Blocks Settings
@@ -56,7 +52,7 @@ social:
 # Image Settings
 # --------------------------------------
 
-favicon: /img/favicon.png
+favicon: /img/favicon.ico
 
 avatar:
   img: /img/avatar.jpg
