@@ -39,28 +39,33 @@
   transition:transform .3s cubic-bezier(.25,.8,.3,1);}
 .pcard-poke:active{transform:scale(.99);}
 
-/* 整卡成品图：轮廓即卡面本身，无外圈金框 / 无深色底 */
+/* 整卡成品图：轮廓只来自 webp 透明通道，不套圆角裁切，也不垫阴影底板 */
 .pcard-poke.full-art{
   display:block;padding:0;background:transparent;
-  /* 贴近 card-front 比例 ≈ 835/1139 */
-  aspect-ratio:835/1139;border-radius:18px;overflow:hidden;
-  /* 轻阴影托起卡片，不画黑边 */
-  box-shadow:0 10px 28px rgba(40,28,10,.18),0 2px 6px rgba(40,28,10,.08);
+  aspect-ratio:835/1139;border-radius:0;overflow:visible;
+  box-shadow:none;
+  filter:drop-shadow(0 12px 22px rgba(40,28,10,.18));
 }
 .pcard-poke.full-art .pk-full{
   position:relative;z-index:0;display:block;
   width:100%;height:100%;
   object-fit:contain;object-position:center;
   background:transparent;pointer-events:none;
-  border:0;border-radius:18px;box-shadow:none;
+  border:0;border-radius:0;box-shadow:none;
 }
 /* full-art 不再套白板 chrome */
 .pcard-poke.full-art .pk-in{display:none;}
-/* 光效贴合圆角卡面，不溢到卡外成黑边 */
+/* 光效跟着卡面 alpha，不在透明角上铺一块底板 */
 .pcard-poke.full-art .holo,
 .pcard-poke.full-art .glit,
 .pcard-poke.full-art .gloss{
-  border-radius:18px;inset:0;
+  border-radius:0;inset:0;
+  -webkit-mask-image:url("/img/card-front.webp");
+  mask-image:url("/img/card-front.webp");
+  -webkit-mask-size:100% 100%;
+  mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
 }
 
 /* 虹彩层：随 --ang 旋转 —— 鼠标移动时色带流动 */
