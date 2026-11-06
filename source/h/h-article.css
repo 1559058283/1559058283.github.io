@@ -1,0 +1,129 @@
+/* 文章 / 归档等 Butterfly 内页：晨光浅底，不用黑封面。首页有自己的壳，不走这里的 #page-header。 */
+
+body:not(:has(.aurora-page)) {
+  background: #f4f0e9;
+  color: #2b2724;
+}
+
+#page-header.post-bg,
+#page-header.not-home-page,
+#page-header.full_page,
+#page-header {
+  height: auto;
+  min-height: 0;
+  padding: 78px 0 18px;
+  background: #f4f0e9 !important;
+  background-image: none !important;
+}
+
+#page-header:not(.not-top-img)::before {
+  display: none !important;
+}
+
+#page-header #post-info,
+#page-header #page-site-info,
+#page-header #site-info {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  transform: none;
+  padding: 8px 6vw 0;
+  text-align: left;
+}
+
+#page-header .post-title,
+#page-header #site-title {
+  color: #2b2724;
+  text-shadow: none;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.35;
+}
+
+#page-header #post-meta,
+#page-header #post-meta a,
+#page-header #post-meta span,
+#page-header #post-meta time,
+#page-header .post-meta-icon {
+  color: #6b635c !important;
+  text-shadow: none;
+}
+
+#nav {
+  background: rgba(250, 248, 243, .82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: none;
+  border-bottom: 1px solid rgba(43, 39, 36, .08);
+}
+
+#nav a,
+#nav span.site-page,
+#nav .site-name,
+#page-header.not-top-img #nav a {
+  color: #6b635c;
+  text-shadow: none;
+}
+
+#nav .brand {
+  display: inline-flex;
+  align-items: flex-end;
+  margin-right: 8px;
+  line-height: 1;
+}
+
+#nav .brand .nm {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -.04em;
+  color: #2b2724;
+  border-bottom: 1.5px solid #c9a35a;
+  padding-bottom: 1px;
+}
+
+#nav .site {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: -.03em;
+  color: #6b635c;
+}
+
+#nav .nav-page-title .site-name {
+  color: #2b2724;
+}
+
+.card-widget,
+#post {
+  background: rgba(250, 248, 243, .9);
+  border: 1px solid rgba(43, 39, 36, .08);
+  border-radius: 13px;
+  box-shadow: 0 1px 2px rgba(43, 39, 36, .04), 0 18px 40px rgba(43, 39, 36, .05);
+}
+
+#post {
+  padding: 8px 8px 18px;
+}
+
+.card-widget .author-info-name {
+  color: #2b2724;
+  letter-spacing: -.02em;
+}
+
+.card-widget .author-info-description {
+  color: #6b635c;
+}
+
+#card-info-btn {
+  background: #2b2724;
+  color: #f4f0e9;
+  border-radius: 999px;
+}
+
+#footer {
+  background: transparent;
+  color: #6b635c;
+}
+
+#footer a { color: #6b635c; }
