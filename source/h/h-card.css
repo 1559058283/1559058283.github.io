@@ -1,0 +1,137 @@
+/* =====================================================================
+   宝可梦式闪卡 —— 本站的签名元素
+   正面 = 整张成品卡面图（.full-art .pk-full）+ 虹彩/细闪/高光
+   背面 = AboutMe.java 代码窗口
+   ===================================================================== */
+
+/* ===== 翻面容器 ===== */
+.flip{position:relative;perspective:1600px;min-height:0;}
+.flip-in{position:relative;width:100%;height:100%;
+  transition:transform .72s cubic-bezier(.3,.85,.25,1);
+  transform-style:preserve-3d;}
+.flip.back .flip-in{transform:rotateY(180deg);}
+.flip-face{backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.flip-face.front{position:relative;z-index:1;}
+.flip-face.rear{position:absolute;inset:0;transform:rotateY(180deg);z-index:0;}
+
+/* 翻面按钮：在 .flip-in 外，始终可点 */
+.flip-btn{position:absolute;right:11px;bottom:11px;z-index:40;
+  display:flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;
+  cursor:pointer;font-family:var(--ui);font-size:12px;color:var(--ink2);
+  background:var(--gl2);border:1px solid var(--ed);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  pointer-events:auto;touch-action:manipulation;
+  transition:color .18s,border-color .18s,transform .18s;}
+.flip-btn:hover{color:var(--ink);border-color:var(--kw);transform:translateY(-1px);}
+.flip-btn .ic{font-size:11px;}
+
+/* ===== 卡牌本体 ===== */
+.pcard-poke{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;
+  aspect-ratio:3/4.1;max-width:390px;margin:0 auto;
+  /* 金色卡框（非 full-art 回落） */
+  background:linear-gradient(145deg,#d9c48a,#f2e5be 18%,#c9ad6e 38%,
+    #f6ecd0 58%,#cdb174 78%,#e8d8a8);
+  padding:10px 9px;
+  box-shadow:0 2px 6px rgba(0,0,0,.14),0 20px 54px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.7);
+  transform-style:preserve-3d;
+  transition:transform .3s cubic-bezier(.25,.8,.3,1);}
+.pcard-poke:active{transform:scale(.99);}
+
+/* 整卡成品图：轮廓只来自 webp 透明通道，不套圆角裁切，也不垫阴影底板 */
+.pcard-poke.full-art{
+  display:block;padding:0;background:transparent;
+  aspect-ratio:835/1139;border-radius:0;overflow:visible;
+  box-shadow:none;
+  filter:drop-shadow(0 12px 22px rgba(40,28,10,.18));
+}
+.pcard-poke.full-art .pk-full{
+  position:relative;z-index:0;display:block;
+  width:100%;height:100%;
+  object-fit:contain;object-position:center;
+  background:transparent;pointer-events:none;
+  border:0;border-radius:0;box-shadow:none;
+}
+/* full-art 不再套白板 chrome */
+.pcard-poke.full-art .pk-in{display:none;}
+/* 光效跟着卡面 alpha，不在透明角上铺一块底板 */
+.pcard-poke.full-art .holo,
+.pcard-poke.full-art .glit,
+.pcard-poke.full-art .gloss{
+  border-radius:0;inset:0;
+  -webkit-mask-image:url("/img/card-front.webp");
+  mask-image:url("/img/card-front.webp");
+  -webkit-mask-size:100% 100%;
+  mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+}
+
+/* 虹彩层：随 --ang 旋转 —— 鼠标移动时色带流动 */
+.pcard-poke .holo{position:absolute;inset:0;z-index:1;pointer-events:none;
+  --ang:108deg; --mx:50%; --my:50%;
+  background:
+    linear-gradient(var(--ang),
+      rgba(255,180,200,.5) 8%, rgba(255,235,160,.46) 22%,
+      rgba(170,240,200,.48) 36%, rgba(160,215,255,.5) 50%,
+      rgba(205,180,255,.46) 64%, rgba(255,190,210,.44) 78%,
+      rgba(255,240,180,.42) 92%);
+  mix-blend-mode:color-dodge;opacity:.42;
+  transition:opacity .3s;}
+.pcard-poke:hover .holo{opacity:.58;}
+/* 细闪颗粒 */
+.pcard-poke .glit{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90'><filter id='s'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0'/></filter><rect width='90' height='90' filter='url(%23s)' opacity='0.5'/></svg>");
+  mix-blend-mode:screen;opacity:.2;}
+/* 鼠标处的高光 */
+.pcard-poke .gloss{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(42% 42% at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.5),transparent 68%);
+  opacity:0;transition:opacity .25s;}
+.pcard-poke:hover .gloss{opacity:1;}
+
+/* 旧白板 chrome（非 full-art 回落保留） */
+.pk-in{position:relative;z-index:4;height:100%;border-radius:10px;overflow:hidden;
+  background:linear-gradient(170deg,#fbf8f0,#f3ece0);
+  display:flex;flex-direction:column;
+  box-shadow:inset 0 0 0 1px rgba(120,100,60,.22);}
+.pk-hd{display:flex;align-items:baseline;gap:8px;padding:9px 12px 7px;}
+.pk-hd .nm{font-size:19px;font-weight:800;letter-spacing:-.01em;color:#23201a;
+  text-shadow:0 1px 0 rgba(255,255,255,.7);}
+.pk-hd .hp{margin-left:auto;display:flex;align-items:baseline;gap:4px;}
+.pk-hd .hp i{font-style:normal;font-size:10px;font-weight:700;color:#8a3a3a;}
+.pk-hd .hp b{font-size:22px;font-weight:800;color:#23201a;font-variant-numeric:tabular-nums;}
+.pk-hd .el{width:21px;height:21px;border-radius:50%;flex:none;align-self:center;
+  background:radial-gradient(circle at 34% 30%,#ffe9a8,#e0a93c 62%,#b6821f);
+  display:grid;place-items:center;font-size:11px;color:#5b3f0c;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 2px rgba(0,0,0,.2);}
+.pk-art{position:relative;margin:0 10px;border-radius:4px;overflow:hidden;
+  flex:1;min-height:0;
+  background:linear-gradient(165deg,#f0e4c8,#e2d0a8 55%,#d8c290);
+  box-shadow:inset 0 0 0 2px rgba(150,125,70,.5),0 1px 3px rgba(0,0,0,.14);}
+.pk-art img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* 翻面提示（第一次出现时轻微摇一下） */
+.pcard-poke.nudge{animation:nud 1.6s ease-in-out .9s 2;}
+@keyframes nud{0%,100%{transform:rotate(0);}35%{transform:rotate(-1deg);}70%{transform:rotate(.8deg);}}
+
+/* ===== 背面：代码窗口撑满 ===== */
+.flip-face.rear .cwin{height:100%;}
+
+@media (max-width:1000px){
+  .pcard-poke{max-width:340px;}
+}
+@media (max-width:760px){
+  .flip{perspective:none;}
+  .flip-in{transition:none;}
+  .flip.back .flip-in{transform:none;}
+  /* 手机不翻面，改成上下堆叠 */
+  .flip-face.rear{position:static;transform:none;margin-top:16px;}
+  .flip-btn{display:none;}
+  .pcard-poke{max-width:320px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .pcard-poke.nudge{animation:none;}
+  .flip-in{transition:none;}
+}

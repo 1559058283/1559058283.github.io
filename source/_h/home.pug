@@ -1,0 +1,352 @@
+- const home = hHome()
+- const countOn = !!(theme.busuanzi && theme.busuanzi.enable !== false && (theme.busuanzi.site_pv || theme.busuanzi.site_uv))
+- const cardJpg = url_for('/img/card-front.jpg')
+- const avatarJpg = url_for('/img/avatar.jpg')
+- const origin = config.url.replace(/\/$/, '')
+
+doctype html
+html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover")
+    title aitechflow · LS
+    meta(name="author" content=config.author || "LS")
+    meta(name="description" content=config.description || "")
+    meta(name="theme-color" content="#f4f0e9")
+    link(rel="icon" href=url_for("/img/favicon.ico"))
+    link(rel="canonical" href=origin + "/")
+    link(rel="alternate" type="application/atom+xml" title=config.title href=url_for("/atom.xml"))
+    meta(property="og:site_name" content="aitechflow")
+    meta(property="og:title" content="aitechflow · LS")
+    meta(property="og:description" content=config.description || "")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=origin + "/")
+    meta(property="og:image" content=origin + cardJpg)
+    link(rel="preload" as="image" href=url_for("/img/card-front.webp") type="image/webp")
+    link(rel="stylesheet" href=url_for("/h/ide-shared.css"))
+    link(rel="stylesheet" href=url_for("/h/g5-cards.css"))
+    link(rel="stylesheet" href=url_for("/h/g6-home.css"))
+    link(rel="stylesheet" href=url_for("/h/g7-flow.css"))
+    link(rel="stylesheet" href=url_for("/h/h-light.css"))
+    link(rel="stylesheet" href=url_for("/h/h-cmdk.css"))
+    link(rel="stylesheet" href=url_for("/h/h-card.css"))
+    link(rel="stylesheet" href=url_for("/h/h-site.css"))
+    if theme.inject && theme.inject.head
+      != injectHtml(theme.inject.head)
+    noscript
+      style.
+        .rv,.ci,.rv-stagger{opacity:1!important;transform:none!important;filter:none!important}
+
+  body
+    .aurora-page(aria-hidden="true")
+
+    header#top.top.glass.show
+      .in
+        a.bd(href="#cover")
+          span.ic(aria-hidden="true") 流
+          | AI Tech Flow
+        nav(aria-label="主导航")
+          a.on.here(href="#cover" data-sec="cover" aria-current="page") 主页
+          a(href="#posts" data-sec="posts") 文章
+          a(href="#whoami" data-sec="whoami") 关于笔者
+        span.nav-meta
+          button#cmdkBtn.cmdk-btn.mag-btn(type="button" aria-label="打开命令面板")
+            span.mg(aria-hidden="true") ⌕
+            span.lb 搜索
+            kbd(data-mod) ⌘K
+          span.pv(title="总访问量")
+            i(aria-hidden="true") ◷
+            if countOn
+              b#busuanzi_value_site_pv –
+            else
+              b –
+          button#theme.nav-th(type="button" aria-label="切换主题") ◐
+
+    section#cover.sec-cover
+      .wash-aur(aria-hidden="true")
+      .wash(aria-hidden="true")
+      .cli(aria-hidden="true")
+        != home.cli
+      .cvr
+        p.eye.ci.c1
+          i
+          | BACKEND · AI · 工程实践笔记
+        .tt-wrap.ci.c2
+          h1
+            != '<span class="br">&lt;</span>aitechflow<span class="us">_</span><span class="br">&gt;</span><span class="cur" aria-hidden="true"></span>'
+        p.sub.ci.c3
+          | 我是 
+          b LS
+          | ，后端开发工程师。写 Java，也写 AI。
+        p.mt.ci.c3 2025.04 至今 · 只记真实踩过的坑
+        .cv-stats.ci.c4
+          div
+            b(data-to=home.stats.posts) 0
+            span 篇文章
+          div
+            if countOn
+              b(data-mirror="busuanzi_value_site_pv") –
+            else
+              b –
+            span 总访问
+          div
+            if countOn
+              b#busuanzi_value_site_uv –
+            else
+              b –
+            span 访客数
+          div
+            b(data-to=home.stats.tags) 0
+            span 个标签
+        .acts.ci.c5
+          a.pri(href="#posts") 看最近写的
+          a(href="#whoami") 我是谁
+      .cue.ci.c5(aria-hidden="true")
+        span.ln
+        | SCROLL
+
+    .flow-tail(aria-hidden="true")
+
+    section#whoami.sec-who
+      .shell(data-stagger-group="")
+        .sec-h.rv-stagger
+          span.no 01 / WHOAMI
+          h2 我是
+            em 谁
+          span.rule
+        .who(data-stagger-group="")
+          .flip.rv-stagger#flip
+            .flip-in
+              .flip-face.front
+                #pokeCard.pcard-poke.full-art
+                  img.pk-full(src=url_for("/img/card-front.webp") alt="鼠鼠 LS" onerror="this.onerror=null;this.src='" + cardJpg + "'")
+                  .holo(aria-hidden="true")
+                  .glit(aria-hidden="true")
+                  .gloss(aria-hidden="true")
+              .flip-face.rear
+                .cwin.glass
+                  .bar
+                    span.dots(aria-hidden="true")
+                      i
+                      i
+                      i
+                    span.mini(role="tablist" aria-label="个人信息文件")
+                      button(type="button" role="tab" aria-selected="true" data-f="about") AboutMe
+                      button(type="button" role="tab" aria-selected="false" data-f="skills") Skills
+                      button(type="button" role="tab" aria-selected="false" data-f="timeline") timeline
+                      button(type="button" role="tab" aria-selected="false" data-f="contact") contact
+                    button#copy.cp(type="button" aria-label="复制") ⧉
+                  .bd
+                    .idrow
+                      img(src=url_for("/img/avatar.webp") alt="LS 的头像" onerror="this.onerror=null;this.src='" + avatarJpg + "'")
+                      span
+                        b LS
+                        span.rl 后端开发 · AI 应用
+                      span.hire
+                        i
+                        | 求职中
+                    #panes
+                  .lkrow
+                    a.mag-btn(href="https://github.com/1559058283" target="_blank" rel="noopener") GitHub ↗
+                    a.mag-btn(href="mailto:lswyyj@163.com") 邮箱
+                    a.mag-btn(href=url_for("/atom.xml")) RSS
+            button#flipBtn.flip-btn(type="button" aria-label="翻到代码")
+              span.ic(aria-hidden="true") ⟲
+              | 看代码
+
+          aside.ovw.glass.beam.rv-stagger
+            span.beam-ring(aria-hidden="true")
+            div
+              h3 网站统计
+                span.ln
+              .statg.kpi
+                .kpi-cell
+                  span.lab 文章
+                  b= home.stats.posts
+                  span.kpi-bars(aria-hidden="true")
+                    each bar in home.kpi.posts
+                      i(style="height:" + bar.h + "%" class=bar.on && "on")
+                  span.sub 近 8 个月
+                .kpi-cell
+                  span.lab 标签
+                  b= home.stats.tags
+                  span.kpi-bars(aria-hidden="true")
+                    each bar in home.kpi.tags
+                      i(style="height:" + bar.h + "%" class=bar.on && "on")
+                  span.sub 按篇数
+                .kpi-cell
+                  span.lab 分类
+                  b= home.stats.categories
+                  span.kpi-bars(aria-hidden="true")
+                    each bar in home.kpi.categories
+                      i(style="height:" + bar.h + "%" class=bar.on && "on")
+                  span.sub 现有分类
+                .kpi-cell
+                  span.lab 月
+                  b= home.stats.months
+                  span.kpi-bars(aria-hidden="true")
+                    each bar in home.kpi.months
+                      i(style="height:" + bar.h + "%" class=bar.on && "on")
+                  span.sub 自 2025.04
+              .vis(style="margin-top:12px")
+                .r
+                  span 总访问
+                  if countOn
+                    b(data-mirror="busuanzi_value_site_pv") –
+                  else
+                    b –
+                .r
+                  span 总访客
+                  if countOn
+                    b(data-mirror="busuanzi_value_site_uv") –
+                  else
+                    b –
+                .r
+                  span 更新
+                  b= home.stats.updated
+            div
+              h3 分类
+                span.ln
+              if home.categories.length
+                .crows
+                  each cat in home.categories
+                    a(href=cat.path)
+                      span.dot(style="background:" + cat.color)
+                      = cat.name
+                      span.n= cat.count
+                      span.bar(style="width:" + cat.width + "%;background:" + cat.color)
+              else
+                p.wall-empty 还没有分类
+            div
+              h3 标签
+                span.ln
+              if home.tags.length
+                .tgs
+                  each tag in home.tags
+                    a(href=tag.path class=tag.hot ? "hot" : false)
+                      = tag.name
+                      if tag.showCount
+                        span.n= tag.count
+              else
+                p.wall-empty 还没有标签
+
+        .heat-strip.glass.beam.rv-stagger
+          span.beam-ring(aria-hidden="true")
+          .ht-head
+            h3 写作活跃
+              span.ln
+            .ht-meta#heatMeta 过去 12 个月
+          #heat
+
+    section#posts.sec-posts
+      .shell(data-stagger-group="")
+        .sec-h.rv-stagger
+          span.no 02 / POSTS
+          h2 写过
+            em 什么
+          span.rule
+          a.rt(href=url_for("/archives/")) 全部归档 →
+        .cats.rv-stagger(role="group" aria-label="分类筛选")
+          button(type="button" data-c="all" aria-pressed="true")
+            | 全部
+            span.n= home.totalPosts
+          each cat in home.categories
+            button(type="button" data-c=cat.name aria-pressed="false")
+              = cat.name
+              span.n= cat.count
+        #wall.wall(data-stagger-group="")
+          if home.cards.length
+            each card in home.cards
+              article.pcard.glass.art-soft.rv-stagger(data-c=card.catIds class=card.hero && "hero")
+                a(href=card.href)
+                  .cv(style="--cvbg:" + card.bg)
+                    span.wm(aria-hidden="true")= card.wm
+                    span.bg
+                      span.ic(aria-hidden="true")= card.icon
+                      = card.catName
+                    span.mn= card.minutes
+                    if card.fresh
+                      span.nw NEW
+                  .txt
+                    h3.tt= card.title
+                    if card.excerpt
+                      p.ex= card.excerpt
+                    .ft
+                      span.g= card.date
+                      span.rt 阅读
+                        span.ar →
+          else
+            p.wall-empty 还没有文章。
+        if home.totalPosts
+          .wall-more.rv-stagger
+            a(href=url_for("/archives/")) 查看全部 #{home.totalPosts} 篇 →
+
+    footer.footer-band
+      .fb-aur(aria-hidden="true")
+      .fb
+        div
+          p.say
+            span.pr ›
+            |  只记真实踩过的坑
+            span.cur(aria-hidden="true")
+          p.meta
+            span LS · 后端开发 / AI 应用
+            span open to work
+            span since 2025.04
+        .cols
+          div
+            h4 SITE
+            a(href=url_for("/archives/")) 文章归档
+            a(href=url_for("/categories/")) 分类
+            a(href=url_for("/tags/")) 标签
+          div
+            h4 CONTACT
+            a.mag-btn(href="https://github.com/1559058283" target="_blank" rel="noopener") GitHub ↗
+            a.mag-btn(href="mailto:lswyyj@163.com") 邮箱
+            a.mag-btn(href=url_for("/atom.xml")) RSS 订阅
+          .cr
+            span © 2025–#{home.year} LS
+            span Hexo + Butterfly
+            span.r
+              a(href="https://aitechflow.cn") aitechflow.cn
+
+    .pal-pick(role="group" aria-label="色系切换")
+      button.p-dawn(type="button" data-p="dawn" aria-pressed="true" title="晨光" aria-label="晨光")
+      button.p-celadon(type="button" data-p="celadon" aria-pressed="false" title="青瓷" aria-label="青瓷")
+      button.p-dusk(type="button" data-p="dusk" aria-pressed="false" title="晚樱" aria-label="晚樱")
+
+    #cmdkMask.cmdk-mask(aria-hidden="true")
+    #cmdk.cmdk(role="dialog" aria-modal="true" aria-label="命令面板")
+      .cmdk-in
+        span.pr(aria-hidden="true") ›
+        input#cmdkInput(placeholder="搜索文章、跳转段落、切换色系…" autocomplete="off" spellcheck="false")
+        kbd esc
+      #cmdkList.cmdk-list(role="listbox" aria-label="命令结果")
+      .cmdk-foot
+        span
+          b ↑↓
+          | 选择
+        span
+          b ⏎
+          | 执行
+        span
+          b esc
+          | 关闭
+        span.r
+          b(data-mod) ⌘K
+          | 随时唤起
+
+    script(src=url_for("/h/ide-shared.js"))
+    script(src=url_for("/h/h-card.js"))
+    script(src=url_for("/h/h-posts.js"))
+    script.
+      window.H_CMDK = !{JSON.stringify(home.cmdk).replace(/</g, "\\u003c")};
+      window.H_HEAT = !{JSON.stringify(home.heat).replace(/</g, "\\u003c")};
+    script(src=url_for("/h/h-cmdk.js"))
+    script(src=url_for("/h/h-heat.js"))
+    script(src=url_for("/h/h-boot.js"))
+    if countOn
+      script(async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js")
+    if theme.inject && theme.inject.bottom
+      != injectHtml(theme.inject.bottom)

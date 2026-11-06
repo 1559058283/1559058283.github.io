@@ -26,10 +26,11 @@ npm run build
 
 - 文章：`source/_posts/`
 - 独立页面：`source/about/`、`source/projects/` 等
+- 首页（浅色极光封面 / 鼠鼠闪卡 / 文章墙）：`source/_h/home.pug`、`source/h/`、`source/img/card-front.webp`
 - 站点配置：`_config.yml`
 - Butterfly 配置：`_config.butterfly.yml`
 - 自定义样式：`source/custom.css`
-- 主题源码：`themes/hexo-theme-butterfly/`
+- 主题源码：`themes/hexo-theme-butterfly/`（仅首页布局改成引入 `source/_h/home.pug`）
 
 ## 发布
 

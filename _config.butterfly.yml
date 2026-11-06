@@ -13,14 +13,12 @@ nav:
   fixed: false
 
 # 菜单设置
+# 主页 / 文章 / 关于笔者 与首页三段对应。
+# 生活、友链、留言板还没有内容，先不放进导航。
 menu:
-  Home: / || fas fa-home
-  Archives: /archives/ || fas fa-archive
-  Tags: /tags/ || fas fa-tags
-  Categories: /categories/ || fas fa-folder
-  Projects: /projects/ || fas fa-rocket
-  # Link: /link/ || fas fa-link
-  About: /about/ || fas fa-heart
+  主页: / || fas fa-home
+  文章: /#posts || fas fa-book-open
+  关于笔者: /#whoami || fas fa-user
 
 # --------------------------------------
 # 社交链接

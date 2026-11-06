@@ -1,0 +1,126 @@
+/* =====================================================================
+   G7 视觉连续性：把封面和下面的段落缝成一套设计
+   三件事
+     ① 暗面不在封面里结束 —— 斜向渐隐，延伸进第二段
+     ② 104° 斜角成为全页的构图语言（分隔线、标头、卡片角）
+     ③ 页尾收一条暗带 —— 和封面的暗面呼应，暗色出现两次才成系统
+   ===================================================================== */
+
+/* ===== ① 暗面延伸：封面之后还有一段渐隐的斜向暗区 ===== */
+.flow-tail{position:relative;height:0;z-index:0;pointer-events:none;}
+.flow-tail::before{
+  content:"";position:absolute;left:0;right:0;top:-180px;height:420px;
+  background:linear-gradient(104deg,
+    transparent 36%,
+    rgba(20,21,24,.1) 50%,
+    rgba(20,21,24,.3) 62%,
+    rgba(20,21,24,.42) 76%,
+    rgba(20,21,24,.3) 100%);
+  mask-image:linear-gradient(#000 0,#000 28%,transparent 92%);
+  -webkit-mask-image:linear-gradient(#000 0,#000 28%,transparent 92%);}
+html[data-theme='dark'] .flow-tail::before{
+  background:linear-gradient(104deg,transparent 36%,
+    rgba(238,236,230,.09) 50%,rgba(238,236,230,.26) 62%,
+    rgba(238,236,230,.38) 76%,rgba(238,236,230,.26) 100%);}
+
+/* 全页 Aurora：固定定位，所以滚动时光一直在，不只属于封面 */
+.aurora-page{position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(30% 36% at 78% 14%,rgba(90,140,200,.2),transparent 64%),
+    radial-gradient(26% 32% at 18% 52%,rgba(120,100,190,.14),transparent 66%),
+    radial-gradient(24% 28% at 72% 86%,rgba(200,140,120,.12),transparent 68%);
+  filter:blur(36px);
+  animation:aurp 34s ease-in-out infinite alternate;}
+@keyframes aurp{to{transform:translate3d(-2.5%,2%,0) scale(1.06);}}
+html[data-theme='dark'] .aurora-page{
+  background:
+    radial-gradient(30% 36% at 78% 14%,rgba(130,170,220,.16),transparent 64%),
+    radial-gradient(26% 32% at 18% 52%,rgba(150,130,210,.12),transparent 66%),
+    radial-gradient(24% 28% at 72% 86%,rgba(215,160,140,.1),transparent 68%);}
+
+/* ===== ② 104° 斜角：成为全页的构图语言 ===== */
+/* 段落分隔：斜线而不是水平线 —— 和封面的分界角度一致 */
+.slash{position:relative;height:1px;margin:0;border:0;overflow:visible;}
+.slash::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(104deg,transparent,var(--ed) 18%,var(--ed) 82%,transparent);}
+/* 段标头：加终端提示符，和 CLI 框呼应 */
+.sec-h .no::before{content:"› ";color:var(--kw);opacity:.6;}
+/* 标头的横线也改成斜向渐变 */
+.sec-h .rule{background:linear-gradient(104deg,var(--ed),transparent) !important;}
+
+/* 卡片：左上角一道斜向高光，呼应封面的分界线 */
+.pcard{position:relative;}
+.pcard::after{content:"";position:absolute;left:0;top:0;width:44%;height:1px;z-index:4;
+  background:linear-gradient(104deg,var(--hi),transparent);pointer-events:none;}
+
+/* 代码窗口和概览卡：同一道斜高光 */
+.cwin::after,.ovw::after{content:"";position:absolute;left:0;top:0;width:40%;height:1px;
+  z-index:4;background:linear-gradient(104deg,var(--hi),transparent);pointer-events:none;}
+.cwin,.ovw{position:relative;}
+
+/* ===== ③ 页尾暗带：和封面的暗面呼应 ===== */
+.footer-band{position:relative;margin-top:60px;padding:54px 0 48px;overflow:hidden;}
+.footer-band::before{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(104deg,
+    rgba(20,21,24,.9) 0,rgba(20,21,24,.94) 42%,#141518 100%);}
+html[data-theme='dark'] .footer-band::before{
+  background:linear-gradient(104deg,
+    rgba(238,236,230,.92) 0,rgba(238,236,230,.95) 42%,#eeece6 100%);}
+/* 顶边斜向高光，标出这条暗带的边界 */
+.footer-band::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;z-index:1;
+  background:linear-gradient(104deg,transparent,rgba(255,255,255,.22) 30%,
+    rgba(255,255,255,.22) 70%,transparent);}
+html[data-theme='dark'] .footer-band::after{
+  background:linear-gradient(104deg,transparent,rgba(20,21,24,.2) 30%,
+    rgba(20,21,24,.2) 70%,transparent);}
+
+.fb{position:relative;z-index:2;max-width:1340px;margin:0 auto;padding:0 22px;
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:end;}
+/* 左：一句收尾 + CLI 提示符 */
+.fb .say{font-family:var(--mono);font-size:clamp(17px,2.1vw,26px);font-weight:500;
+  line-height:1.5;letter-spacing:-.02em;color:rgba(243,241,235,.94);}
+html[data-theme='dark'] .fb .say{color:rgba(20,21,24,.94);}
+.fb .say .pr{color:#9cc0e8;}
+html[data-theme='dark'] .fb .say .pr{color:#2f5280;}
+.fb .say .cur{display:inline-block;width:.46em;height:.84em;background:#9cc0e8;
+  margin-left:.1em;vertical-align:-.04em;animation:cb 1.05s steps(1) infinite;}
+html[data-theme='dark'] .fb .say .cur{background:#2f5280;}
+.fb .meta{margin-top:16px;font-family:var(--mono);font-size:11.5px;
+  color:rgba(243,241,235,.44);display:flex;gap:16px;flex-wrap:wrap;}
+html[data-theme='dark'] .fb .meta{color:rgba(20,21,24,.46);}
+/* 右：链接 + 版权 */
+.fb .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+.fb .cols h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+  color:rgba(243,241,235,.38);margin-bottom:10px;}
+html[data-theme='dark'] .fb .cols h4{color:rgba(20,21,24,.4);}
+.fb .cols a{display:block;padding:3px 0;font-size:13px;
+  color:rgba(243,241,235,.72);transition:color .18s,padding-left .18s;}
+html[data-theme='dark'] .fb .cols a{color:rgba(20,21,24,.74);}
+.fb .cols a:hover{color:#9cc0e8;padding-left:3px;}
+html[data-theme='dark'] .fb .cols a:hover{color:#2f5280;}
+.fb .cr{grid-column:1/-1;margin-top:30px;padding-top:18px;font-family:var(--mono);
+  font-size:11px;color:rgba(243,241,235,.34);
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;gap:16px;flex-wrap:wrap;}
+html[data-theme='dark'] .fb .cr{color:rgba(20,21,24,.36);border-top-color:rgba(20,21,24,.1);}
+.fb .cr .r{margin-left:auto;}
+.fb .cr a{color:inherit;}
+.fb .cr a:hover{color:#9cc0e8;}
+html[data-theme='dark'] .fb .cr a:hover{color:#2f5280;}
+
+@media (max-width:900px){
+  .flow-tail::before{top:-120px;height:300px;
+    background:linear-gradient(183deg,transparent 30%,rgba(20,21,24,.22) 60%,rgba(20,21,24,.3) 100%);}
+  html[data-theme='dark'] .flow-tail::before{
+    background:linear-gradient(183deg,transparent 30%,rgba(238,236,230,.2) 60%,rgba(238,236,230,.28) 100%);}
+  .footer-band{margin-top:44px;padding:40px 0 36px;}
+  .fb{grid-template-columns:1fr;gap:28px;padding:0 16px;}
+  .fb .cr{margin-top:22px;}
+  .fb .cr .r{margin-left:0;width:100%;}
+}
+@media (prefers-reduced-motion:reduce){
+  .aurora-page,.fb .say .cur{animation:none;}
+}
+@media (prefers-reduced-transparency:reduce){
+  .aurora-page,.flow-tail::before{display:none;}
+}
