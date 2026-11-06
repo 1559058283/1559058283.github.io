@@ -163,6 +163,32 @@ hexo.extend.helper.register('hHome', function hHome() {
     };
   });
 
+  const heat = posts.map(post => ({
+    d: post.date.format('YYYY-MM-DD'),
+    t: post.title
+  }));
+
+  function barsFromCounts(counts) {
+    const max = Math.max(1, ...counts, 0);
+    return counts.map(n => ({
+      h: n > 0 ? Math.max(32, Math.round((n / max) * 100)) : 16,
+      on: n > 0
+    }));
+  }
+
+  const monthCounts = [];
+  for (let i = 7; i >= 0; i--) {
+    const cursor = new Date();
+    cursor.setDate(1);
+    cursor.setMonth(cursor.getMonth() - i);
+    const key = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, '0')}`;
+    monthCounts.push(posts.filter(post => post.date.format('YYYY-MM') === key).length);
+  }
+  const tagCounts = (tags.length ? tags.slice(0, 6) : [{ length: 0 }]).map(tag => tag.length);
+  const catCounts = (categories.length ? categories : [{ length: 0 }]).map(cat => cat.length);
+  const monthSpan = Math.min(8, Math.max(1, monthsSinceApril2025(new Date())));
+  const spanBars = Array.from({ length: 8 }, (_, i) => (i < monthSpan ? 1 : 0));
+
   const cliPosts = posts.slice(0, 3).map(post => ({
     date: post.date.format('YYYY-MM-DD'),
     file: `${post.slug}.md`
@@ -201,6 +227,13 @@ hexo.extend.helper.register('hHome', function hHome() {
       since: SINCE
     },
     totalPosts: posts.length,
+    heat,
+    kpi: {
+      posts: barsFromCounts(monthCounts),
+      tags: barsFromCounts(tagCounts),
+      categories: barsFromCounts(catCounts),
+      months: barsFromCounts(spanBars)
+    },
     cards,
     categories: catRows,
     tags: tagRows,

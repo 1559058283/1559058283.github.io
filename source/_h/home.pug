@@ -36,7 +36,7 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
       != injectHtml(theme.inject.head)
     noscript
       style.
-        .rv,.ci{opacity:1!important;transform:none!important}
+        .rv,.ci,.rv-stagger{opacity:1!important;transform:none!important;filter:none!important}
 
   body
     .aurora-page(aria-hidden="true")
@@ -51,7 +51,7 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
           a(href="#posts" data-sec="posts") 文章
           a(href="#whoami" data-sec="whoami") 关于笔者
         span.nav-meta
-          button#cmdkBtn.cmdk-btn(type="button" aria-label="打开命令面板")
+          button#cmdkBtn.cmdk-btn.mag-btn(type="button" aria-label="打开命令面板")
             span.mg(aria-hidden="true") ⌕
             span.lb 搜索
             kbd(data-mod) ⌘K
@@ -109,14 +109,14 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
     .flow-tail(aria-hidden="true")
 
     section#whoami.sec-who
-      .shell
-        .sec-h.rv
+      .shell(data-stagger-group="")
+        .sec-h.rv-stagger
           span.no 01 / WHOAMI
           h2 我是
             em 谁
           span.rule
-        .who
-          .flip.rv#flip
+        .who(data-stagger-group="")
+          .flip.rv-stagger#flip
             .flip-in
               .flip-face.front
                 #pokeCard.pcard-poke.full-art
@@ -148,30 +148,47 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
                         | 求职中
                     #panes
                   .lkrow
-                    a(href="https://github.com/1559058283" target="_blank" rel="noopener") GitHub ↗
-                    a(href="mailto:lswyyj@163.com") 邮箱
-                    a(href=url_for("/atom.xml")) RSS
+                    a.mag-btn(href="https://github.com/1559058283" target="_blank" rel="noopener") GitHub ↗
+                    a.mag-btn(href="mailto:lswyyj@163.com") 邮箱
+                    a.mag-btn(href=url_for("/atom.xml")) RSS
             button#flipBtn.flip-btn(type="button" aria-label="翻到代码")
               span.ic(aria-hidden="true") ⟲
               | 看代码
 
-          aside.ovw.glass.rv
+          aside.ovw.glass.beam.rv-stagger
+            span.beam-ring(aria-hidden="true")
             div
               h3 网站统计
                 span.ln
-              .statg
-                div
+              .statg.kpi
+                .kpi-cell
+                  span.lab 文章
                   b= home.stats.posts
-                  span 文章
-                div
+                  span.kpi-bars(aria-hidden="true")
+                    each bar in home.kpi.posts
+                      i(style="height:" + bar.h + "%" class=bar.on && "on")
+                  span.sub 近 8 个月
+                .kpi-cell
+                  span.lab 标签
                   b= home.stats.tags
-                  span 标签
-                div
+                  span.kpi-bars(aria-hidden="true")
+                    each bar in home.kpi.tags
+                      i(style="height:" + bar.h + "%" class=bar.on && "on")
+                  span.sub 按篇数
+                .kpi-cell
+                  span.lab 分类
                   b= home.stats.categories
-                  span 分类
-                div
+                  span.kpi-bars(aria-hidden="true")
+                    each bar in home.kpi.categories
+                      i(style="height:" + bar.h + "%" class=bar.on && "on")
+                  span.sub 现有分类
+                .kpi-cell
+                  span.lab 月
                   b= home.stats.months
-                  span 月
+                  span.kpi-bars(aria-hidden="true")
+                    each bar in home.kpi.months
+                      i(style="height:" + bar.h + "%" class=bar.on && "on")
+                  span.sub 自 2025.04
               .vis(style="margin-top:12px")
                 .r
                   span 总访问
@@ -214,15 +231,23 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
               else
                 p.wall-empty 还没有标签
 
+        .heat-strip.glass.beam.rv-stagger
+          span.beam-ring(aria-hidden="true")
+          .ht-head
+            h3 写作活跃
+              span.ln
+            .ht-meta#heatMeta 过去 12 个月
+          #heat
+
     section#posts.sec-posts
-      .shell
-        .sec-h.rv
+      .shell(data-stagger-group="")
+        .sec-h.rv-stagger
           span.no 02 / POSTS
           h2 写过
             em 什么
           span.rule
           a.rt(href=url_for("/archives/")) 全部归档 →
-        .cats.rv(role="group" aria-label="分类筛选")
+        .cats.rv-stagger(role="group" aria-label="分类筛选")
           button(type="button" data-c="all" aria-pressed="true")
             | 全部
             span.n= home.totalPosts
@@ -230,10 +255,10 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             button(type="button" data-c=cat.name aria-pressed="false")
               = cat.name
               span.n= cat.count
-        #wall.wall.rv
+        #wall.wall(data-stagger-group="")
           if home.cards.length
             each card in home.cards
-              article.pcard.glass(data-c=card.catIds class=card.hero && "hero")
+              article.pcard.glass.art-soft.rv-stagger(data-c=card.catIds class=card.hero && "hero")
                 a(href=card.href)
                   .cv(style="--cvbg:" + card.bg)
                     span.wm(aria-hidden="true")= card.wm
@@ -254,7 +279,7 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
           else
             p.wall-empty 还没有文章。
         if home.totalPosts
-          .wall-more.rv
+          .wall-more.rv-stagger
             a(href=url_for("/archives/")) 查看全部 #{home.totalPosts} 篇 →
 
     footer.footer-band
@@ -277,9 +302,9 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             a(href=url_for("/tags/")) 标签
           div
             h4 CONTACT
-            a(href="https://github.com/1559058283" target="_blank" rel="noopener") GitHub ↗
-            a(href="mailto:lswyyj@163.com") 邮箱
-            a(href=url_for("/atom.xml")) RSS 订阅
+            a.mag-btn(href="https://github.com/1559058283" target="_blank" rel="noopener") GitHub ↗
+            a.mag-btn(href="mailto:lswyyj@163.com") 邮箱
+            a.mag-btn(href=url_for("/atom.xml")) RSS 订阅
           .cr
             span © 2025–#{home.year} LS
             span Hexo + Butterfly
@@ -317,7 +342,9 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
     script(src=url_for("/h/h-posts.js"))
     script.
       window.H_CMDK = !{JSON.stringify(home.cmdk).replace(/</g, "\\u003c")};
+      window.H_HEAT = !{JSON.stringify(home.heat).replace(/</g, "\\u003c")};
     script(src=url_for("/h/h-cmdk.js"))
+    script(src=url_for("/h/h-heat.js"))
     script(src=url_for("/h/h-boot.js"))
     if countOn
       script(async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js")

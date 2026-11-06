@@ -1063,8 +1063,9 @@ css_prefix: true
 inject:
   head:
     - <link rel="stylesheet" href="/custom.css">
+    - <link rel="stylesheet" href="/h/h-extras.css">
   bottom:
-    # - <script src="xxxx"></script>
+    - <script src="/h/h-extras.js"></script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
