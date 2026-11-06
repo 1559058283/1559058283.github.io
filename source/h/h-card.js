@@ -73,7 +73,7 @@
   });
   card.setAttribute('tabindex', '0');
   card.setAttribute('role', 'button');
-  card.setAttribute('aria-label', '鼠鼠 LS 收藏卡，按回车翻到代码');
+  card.setAttribute('aria-label', '鼠鼠 LIUS 收藏卡，按回车翻到代码');
   card.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
   });

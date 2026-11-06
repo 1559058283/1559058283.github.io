@@ -288,15 +288,15 @@ aside:
     category: true
   card_author:
     enable: true
-    description:
+    description: Java · Spring · AI 应用。只记真实踩过的坑。
     button:
       enable: true
       icon: fab fa-github
-      text: Follow Me
+      text: GitHub
       link: https://github.com/1559058283
   card_announcement:
-    enable: true
-    content: This is my Blog
+    enable: false
+    content: Java · Spring · AI 应用。只记真实踩过的坑。
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -1064,6 +1064,7 @@ inject:
   head:
     - <link rel="stylesheet" href="/custom.css">
     - <link rel="stylesheet" href="/h/h-extras.css">
+    - <link rel="stylesheet" href="/h/h-article.css">
   bottom:
     - <script src="/h/h-extras.js"></script>
 

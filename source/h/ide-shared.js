@@ -11,7 +11,7 @@ const FILES = {
     name: 'AboutMe.java', icon: 'j',
     lines: [
       `${K('public class')} AboutMe {`, ``,
-      `    ${K('String')} name  = ${S('"LS"')};`,
+      `    ${K('String')} name  = ${S('"LIUS"')};`,
       `    ${K('String')} role  = ${S('"后端开发工程师"')};`,
       `    ${K('String')} focus = ${S('"Java / AI 工程化"')};`,
       `    ${K('int')}    since = 2025;`, ``,
@@ -23,7 +23,7 @@ const FILES = {
     ],
     raw: `public class AboutMe {
 
-    String name  = "LS";
+    String name  = "LIUS";
     String role  = "后端开发工程师";
     String focus = "Java / AI 工程化";
     int    since = 2025;
@@ -67,26 +67,24 @@ const FILES = {
     name: 'timeline.log', icon: 'l',
     lines: [
       `${C('# git log --oneline --reverse')}`, ``,
-      `${K('2025.04')}  ${S('init')}      搭起 aitechflow.cn，第一篇是建站记录`,
-      `${K('2025.09')}  ${S('fix')}       服务器被挖矿，学会了基线加固`,
-      `${K('2025.11')}  ${S('perf')}      SpringBoot 启动从 12s 压到 3s`,
-      `${K('2025.12')}  ${S('docs')}      年终总结：从 CRUD 到 AI 应用`,
-      `${K('2026.04')}  ${S('refactor')}  博客迁到 GitHub Pages，省下维护精力`,
-      `${K('2026.05')}  ${S('fix')}       Redis 缓存一致性，一次线上事故`,
-      `${K('2026.09')}  ${S('feat')}      开始做 RAG，发现检索比模型重要`,
-      `${K('2026.10')}  ${S('feat')}      Spring AI 接通义千问，踩坑最多的一次`, ``,
+      `${K('2025.04')}  ${S('init')}      aitechflow.cn 上线，专门记 Java 和部署里的选择`,
+      `${K('2025.08')}  ${S('build')}     Spring Boot 按 web / domain / infra 拆开编译`,
+      `${K('2025.11')}  ${S('perf')}      冷启动从十秒级收到数秒，镜像也改成分层`,
+      `${K('2026.04')}  ${S('chore')}     博客迁到 GitHub Pages，源码和发布分开`,
+      `${K('2026.06')}  ${S('feat')}      检索拆成切块、混合召回、重排，能单独换`,
+      `${K('2026.09')}  ${S('note')}      同一模型下，检索质量比换提示词拉开得更多`,
+      `${K('2026.10')}  ${S('feat')}      Spring AI 接通义千问，流式、超时、依赖都留了配置`, ``,
       `${C('# HEAD -> main · 还在写')}`
     ],
     raw: `# git log --oneline --reverse
 
-2025.04  init      搭起 aitechflow.cn，第一篇是建站记录
-2025.09  fix       服务器被挖矿，学会了基线加固
-2025.11  perf      SpringBoot 启动从 12s 压到 3s
-2025.12  docs      年终总结：从 CRUD 到 AI 应用
-2026.04  refactor  博客迁到 GitHub Pages，省下维护精力
-2026.05  fix       Redis 缓存一致性，一次线上事故
-2026.09  feat      开始做 RAG，发现检索比模型重要
-2026.10  feat      Spring AI 接通义千问，踩坑最多的一次
+2025.04  init      aitechflow.cn 上线，专门记 Java 和部署里的选择
+2025.08  build     Spring Boot 按 web / domain / infra 拆开编译
+2025.11  perf      冷启动从十秒级收到数秒，镜像也改成分层
+2026.04  chore     博客迁到 GitHub Pages，源码和发布分开
+2026.06  feat      检索拆成切块、混合召回、重排，能单独换
+2026.09  note      同一模型下，检索质量比换提示词拉开得更多
+2026.10  feat      Spring AI 接通义千问，流式、超时、依赖都留了配置
 
 # HEAD -> main · 还在写`
   },
@@ -94,7 +92,7 @@ const FILES = {
     name: 'contact.md', icon: 'm',
     lines: [
       `${K('# 联系')}`, ``,
-      `${C('> 正在找 Java 后端 / AI 应用开发的机会，欢迎内推。')}`, ``,
+      `${C('> 写信就行。Java 工程、AI 应用落地、建站踩坑，都可以。')}`, ``,
       `- 邮箱　　${S('lswyyj@163.com')}`,
       `- GitHub　${S('github.com/1559058283')}`,
       `- 博客　　${S('aitechflow.cn')}`,
@@ -105,7 +103,7 @@ const FILES = {
     ],
     raw: `# 联系
 
-> 正在找 Java 后端 / AI 应用开发的机会，欢迎内推。
+> 写信就行。Java 工程、AI 应用落地、建站踩坑，都可以。
 
 - 邮箱    lswyyj@163.com
 - GitHub  github.com/1559058283
