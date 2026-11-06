@@ -70,7 +70,7 @@
 
     { g:'链接', ic:'↗', t:'GitHub',       k:'github 代码 仓库',
       run: () => window.open('https://github.com/1559058283', '_blank', 'noopener') },
-    { g:'链接', ic:'✉', t:'发邮件给 LS',   k:'mail email 联系 内推',
+    { g:'链接', ic:'✉', t:'发邮件给 LIUS', k:'mail email 联系',
       run: () => { location.href = 'mailto:lswyyj@163.com'; } },
     { g:'链接', ic:'∞', t:'RSS 订阅',     k:'rss feed atom 订阅',
       run: () => window.open('/atom.xml', '_blank', 'noopener') },

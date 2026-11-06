@@ -358,6 +358,78 @@ html::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #d4b56e, #b8924a);
 }
 
+/* ---- 顶栏字标：LIUS，不用「流」 ---- */
+.top .bd .brand {
+  display: inline-flex;
+  align-items: flex-end;
+  line-height: 1;
+}
+.top .bd .brand .nm {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: -.04em;
+  color: var(--ink);
+  border-bottom: 1.5px solid #c9a35a;
+  padding-bottom: 1px;
+}
+.top .bd .site {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: -.03em;
+  color: var(--ink2);
+}
+
+/* ---- 背面 IDE：深色编辑器框 ---- */
+.cwin.ide {
+  background: #1c1e22;
+  border-color: #2e3138;
+  color: #e6e1d8;
+  box-shadow: 0 16px 40px rgba(28, 24, 18, .18);
+}
+.cwin.ide.glass::before { background: linear-gradient(90deg, transparent, rgba(201, 163, 90, .45), transparent); }
+.cwin.ide .bar {
+  height: 38px;
+  background: #2a2d33;
+  border-bottom: 1px solid #3a3e46;
+}
+.cwin.ide .mini button { color: #8d887f; }
+.cwin.ide .mini button:hover { color: #e6e1d8; background: rgba(255, 255, 255, .05); }
+.cwin.ide .mini button[aria-selected="true"] {
+  color: #f3efe6;
+  background: #1c1e22;
+  box-shadow: inset 0 -2px 0 #c9a35a;
+}
+.cwin.ide .cp { color: #8d887f; }
+.cwin.ide .cp:hover { color: #e8b070; background: rgba(255, 255, 255, .04); }
+.cwin.ide .bd {
+  background: #1c1e22;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.cwin.ide .idrow { padding-bottom: 12px; border-bottom: 1px solid #2e3138; }
+.cwin.ide .idrow b { color: #f3efe6; }
+.cwin.ide .idrow .rl { color: #9a948a; }
+.cwin.ide .idrow img { box-shadow: 0 0 0 1px #3a3e46; }
+.cwin.ide .idrow .hire {
+  color: #e8b070;
+  background: rgba(232, 176, 112, .12);
+  border-color: rgba(201, 163, 90, .45);
+}
+.cwin.ide .idrow .hire i { background: #e8b070; }
+.cwin.ide .code { padding: 8px 0 16px; background: #1c1e22; }
+.cwin.ide .code .gut { color: #5e5a55; }
+.cwin.ide .code .src,
+.cwin.ide .code .l { color: #e6e1d8; }
+.cwin.ide .code .l:hover { background: rgba(255, 255, 255, .04); }
+.cwin.ide .kw { color: #e8b070; }
+.cwin.ide .st { color: #b7d39a; }
+.cwin.ide .cm { color: #7d7872; }
+.cwin.ide .lkrow { border-top-color: #2e3138; background: #1c1e22; }
+.cwin.ide .lkrow a { color: #b7b1a8; }
+.cwin.ide .lkrow a:hover { color: #e8b070; }
+
 @media (max-width: 760px) {
   .heat-ylabels { display: none; }
   .statg.kpi .kpi-cell b { font-size: 22px; }

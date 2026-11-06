@@ -10,15 +10,15 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover")
-    title aitechflow · LS
-    meta(name="author" content=config.author || "LS")
+    title aitechflow · LIUS
+    meta(name="author" content=config.author || "LIUS")
     meta(name="description" content=config.description || "")
     meta(name="theme-color" content="#f4f0e9")
     link(rel="icon" href=url_for("/img/favicon.ico"))
     link(rel="canonical" href=origin + "/")
     link(rel="alternate" type="application/atom+xml" title=config.title href=url_for("/atom.xml"))
     meta(property="og:site_name" content="aitechflow")
-    meta(property="og:title" content="aitechflow · LS")
+    meta(property="og:title" content="aitechflow · LIUS")
     meta(property="og:description" content=config.description || "")
     meta(property="og:type" content="website")
     meta(property="og:url" content=origin + "/")
@@ -43,9 +43,10 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
 
     header#top.top.glass.show
       .in
-        a.bd(href="#cover")
-          span.ic(aria-hidden="true") 流
-          | AI Tech Flow
+        a.bd(href="#cover" aria-label="LIUS · aitechflow")
+          span.brand(aria-hidden="true")
+            span.nm LIUS
+          span.site aitechflow
         nav(aria-label="主导航")
           a.on.here(href="#cover" data-sec="cover" aria-current="page") 主页
           a(href="#posts" data-sec="posts") 文章
@@ -77,7 +78,7 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             != '<span class="br">&lt;</span>aitechflow<span class="us">_</span><span class="br">&gt;</span><span class="cur" aria-hidden="true"></span>'
         p.sub.ci.c3
           | 我是 
-          b LS
+          b LIUS
           | ，后端开发工程师。写 Java，也写 AI。
         p.mt.ci.c3 2025.04 至今 · 只记真实踩过的坑
         .cv-stats.ci.c4
@@ -120,12 +121,12 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             .flip-in
               .flip-face.front
                 #pokeCard.pcard-poke.full-art
-                  img.pk-full(src=url_for("/img/card-front.webp") alt="鼠鼠 LS" onerror="this.onerror=null;this.src='" + cardJpg + "'")
+                  img.pk-full(src=url_for("/img/card-front.webp") alt="鼠鼠 LIUS" onerror="this.onerror=null;this.src='" + cardJpg + "'")
                   .holo(aria-hidden="true")
                   .glit(aria-hidden="true")
                   .gloss(aria-hidden="true")
               .flip-face.rear
-                .cwin.glass
+                .cwin.glass.ide
                   .bar
                     span.dots(aria-hidden="true")
                       i
@@ -139,13 +140,13 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
                     button#copy.cp(type="button" aria-label="复制") ⧉
                   .bd
                     .idrow
-                      img(src=url_for("/img/avatar.webp") alt="LS 的头像" onerror="this.onerror=null;this.src='" + avatarJpg + "'")
+                      img(src=url_for("/img/avatar.webp") alt="LIUS 的头像" onerror="this.onerror=null;this.src='" + avatarJpg + "'")
                       span
-                        b LS
+                        b LIUS
                         span.rl 后端开发 · AI 应用
                       span.hire
                         i
-                        | 求职中
+                        | 在写
                     #panes
                   .lkrow
                     a.mag-btn(href="https://github.com/1559058283" target="_blank" rel="noopener") GitHub ↗
@@ -291,8 +292,8 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             |  只记真实踩过的坑
             span.cur(aria-hidden="true")
           p.meta
-            span LS · 后端开发 / AI 应用
-            span open to work
+            span LIUS · 后端开发 / AI 应用
+            span 在写
             span since 2025.04
         .cols
           div
@@ -306,7 +307,7 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             a.mag-btn(href="mailto:lswyyj@163.com") 邮箱
             a.mag-btn(href=url_for("/atom.xml")) RSS 订阅
           .cr
-            span © 2025–#{home.year} LS
+            span © 2025–#{home.year} LIUS
             span Hexo + Butterfly
             span.r
               a(href="https://aitechflow.cn") aitechflow.cn

@@ -109,7 +109,7 @@ aside:
   position: right  # 位置: left / right
   card_author:
     enable: true
-    name: LS  # 你的名字
+    name: LIUS  # 你的名字
     description: Java 开发 | AI 工程实践 | 建站笔记
     button:
       enable: true
@@ -118,7 +118,7 @@ aside:
       link: https://github.com/1559058283
   card_announcement:
     enable: true
-    content: '📍 正在求职<br>🔧 Java | Spring Boot | AI<br>📝 记录建站、部署、踩坑全过程<br>💬 欢迎访问交流 ~'
+    content: '🔧 Java | Spring Boot | AI<br>📝 记录建站、部署、踩坑全过程<br>💬 欢迎访问交流 ~'
   card_categories:
     enable: true
     limit: 8
