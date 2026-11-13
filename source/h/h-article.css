@@ -102,8 +102,49 @@ body:not(:has(.aurora-page)) {
   box-shadow: 0 1px 2px rgba(43, 39, 36, .04), 0 18px 40px rgba(43, 39, 36, .05);
 }
 
+/*
+  #post 比 Butterfly 的 .layout > div:first-child:not(.nc)
+  （桌面 50px 40px，≤768px 为 36px 14px）优先级更高。
+  原先 8px 8px 18px 把正文和通栏图压到卡片边缘；
+  窄屏再叠上 .layout 的 20px 5px，几乎贴到视口。
+  这里把卡片内边距收回长文阅读的尺度，不改卡片外观。
+*/
 #post {
-  padding: 8px 8px 18px;
+  padding: 42px 44px 48px;
+}
+
+@media screen and (max-width: 768px) {
+  #post {
+    padding: 28px 22px 36px;
+  }
+}
+
+/*
+  配图略收进文字栏，避免通栏后仍然撑满整列。
+  ≤768px 保持内容区 100%：手机上 gate 等没有 <picture> 窄图替换的
+  长图需要这段宽度才看得清，source 的媒体查询也不受影响。
+*/
+@media screen and (min-width: 769px) {
+  #article-container > picture,
+  #article-container > p > picture {
+    display: block;
+    width: min(92%, 44rem);
+    margin: 0 auto 20px;
+  }
+
+  #article-container > picture img,
+  #article-container > p > picture img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  #article-container > p > img {
+    width: min(92%, 44rem);
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .card-widget .author-info-name {
