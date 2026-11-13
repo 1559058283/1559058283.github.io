@@ -83,10 +83,26 @@
     });
   }
 
+  function initPreloader() {
+    const box = document.getElementById('loading-box');
+    if (!box) return;
+    const show = () => {
+      document.body.style.overflow = 'hidden';
+      box.classList.remove('loaded');
+    };
+    const hide = () => {
+      document.body.style.overflow = '';
+      box.classList.add('loaded');
+    };
+    document.addEventListener('pjax:send', show);
+    document.addEventListener('pjax:complete', hide);
+  }
+
   function boot() {
     initStagger();
     initProgress();
     initMagnetic();
+    initPreloader();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
