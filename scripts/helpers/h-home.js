@@ -196,11 +196,11 @@ hexo.extend.helper.register('hHome', function hHome() {
 
   const postsLabel = `${posts.length} · since ${SINCE}`.padEnd(18, ' ');
   const cli = [
-    '<span class="mk">LIUS</span>  <span class="ac">aitechflow</span>  v2026.11',
+    '<span class="mk">LiuS</span>  <span class="ac">aitechflow</span>  v2026.11',
     '',
     '<span class="dim">  ╭────────────────────────────────────────╮</span>',
     `<span class="dim">  │</span>  <span class="mk">cwd</span>      aitechflow.cn               <span class="dim">│</span>`,
-    `<span class="dim">  │</span>  <span class="mk">author</span>   LIUS · 后端 / AI            <span class="dim">│</span>`,
+    `<span class="dim">  │</span>  <span class="mk">author</span>   LiuS · 软件 / AI            <span class="dim">│</span>`,
     `<span class="dim">  │</span>  <span class="mk">posts</span>    ${esc(postsLabel)}<span class="dim">│</span>`,
     `<span class="dim">  │</span>  <span class="mk">status</span>   <span class="ac">still writing</span>              <span class="dim">│</span>`,
     '<span class="dim">  ╰────────────────────────────────────────╯</span>',

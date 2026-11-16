@@ -109,8 +109,8 @@ aside:
   position: right  # 位置: left / right
   card_author:
     enable: true
-    name: LIUS  # 你的名字
-    description: Java · Spring · AI 应用。只记真实踩过的坑。
+    name: LiuS  # 你的名字
+    description: 软件开发，也做 AI 工程。只记真实踩过的坑。
     button:
       enable: true
       icon: fab fa-github
@@ -118,7 +118,7 @@ aside:
       link: https://github.com/1559058283
   card_announcement:
     enable: false
-    content: 'Java · Spring · AI 应用。只记真实踩过的坑。'
+    content: '软件开发，也做 AI 工程。只记真实踩过的坑。'
   card_categories:
     enable: true
     limit: 8

@@ -10,15 +10,15 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover")
-    title aitechflow · LIUS
-    meta(name="author" content=config.author || "LIUS")
+    title aitechflow · LiuS
+    meta(name="author" content=config.author || "LiuS")
     meta(name="description" content=config.description || "")
     meta(name="theme-color" content="#f4f0e9")
     link(rel="icon" href=url_for("/img/favicon.ico"))
     link(rel="canonical" href=origin + "/")
     link(rel="alternate" type="application/atom+xml" title=config.title href=url_for("/atom.xml"))
     meta(property="og:site_name" content="aitechflow")
-    meta(property="og:title" content="aitechflow · LIUS")
+    meta(property="og:title" content="aitechflow · LiuS")
     meta(property="og:description" content=config.description || "")
     meta(property="og:type" content="website")
     meta(property="og:url" content=origin + "/")
@@ -43,9 +43,9 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
 
     header#top.top.glass.show
       .in
-        a.bd(href="#cover" aria-label="LIUS · aitechflow")
+        a.bd(href="#cover" aria-label="LiuS · aitechflow")
           span.brand(aria-hidden="true")
-            span.nm LIUS
+            span.nm LiuS
           span.site aitechflow
         nav(aria-label="主导航")
           a.on.here(href="#cover" data-sec="cover" aria-current="page") 主页
@@ -72,14 +72,14 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
       .cvr
         p.eye.ci.c1
           i
-          | BACKEND · AI · 工程实践笔记
+          | 软件开发 · AI 工程 · 真实踩坑
         .tt-wrap.ci.c2
           h1
             != '<span class="br">&lt;</span>aitechflow<span class="us">_</span><span class="br">&gt;</span><span class="cur" aria-hidden="true"></span>'
         p.sub.ci.c3
           | 我是 
-          b LIUS
-          | ，后端开发工程师。写 Java，也写 AI。
+          b LiuS
+          | ，软件开发，也做 AI 工程。写 AI Coding、Agent 和企业 AI 落地。
         p.mt.ci.c3 2025.04 至今 · 只记真实踩过的坑
         .cv-stats.ci.c4
           div
@@ -121,7 +121,7 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             .flip-in
               .flip-face.front
                 #pokeCard.pcard-poke.full-art
-                  img.pk-full(src=url_for("/img/card-front.webp") alt="鼠鼠 LIUS" onerror="this.onerror=null;this.src='" + cardJpg + "'")
+                  img.pk-full(src=url_for("/img/card-front.webp") alt="鼠鼠 LiuS" onerror="this.onerror=null;this.src='" + cardJpg + "'")
                   .holo(aria-hidden="true")
                   .glit(aria-hidden="true")
                   .gloss(aria-hidden="true")
@@ -140,10 +140,10 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
                     button#copy.cp(type="button" aria-label="复制") ⧉
                   .bd
                     .idrow
-                      img(src=url_for("/img/avatar.webp") alt="LIUS 的头像" onerror="this.onerror=null;this.src='" + avatarJpg + "'")
+                      img(src=url_for("/img/avatar.webp") alt="LiuS 的头像" onerror="this.onerror=null;this.src='" + avatarJpg + "'")
                       span
-                        b LIUS
-                        span.rl 后端开发 · AI 应用
+                        b LiuS
+                        span.rl 软件开发 · AI 工程
                       span.hire
                         i
                         | 在写
@@ -292,7 +292,7 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             |  只记真实踩过的坑
             span.cur(aria-hidden="true")
           p.meta
-            span LIUS · 后端开发 / AI 应用
+            span LiuS · 软件开发 / AI 工程
             span 在写
             span since 2025.04
         .cols
@@ -307,7 +307,7 @@ html(lang=config.language || 'zh-CN' data-theme="light" data-pal="dawn")
             a.mag-btn(href="mailto:lswyyj@163.com") 邮箱
             a.mag-btn(href=url_for("/atom.xml")) RSS 订阅
           .cr
-            span © 2025–#{home.year} LIUS
+            span © 2025–#{home.year} LiuS
             span Hexo + Butterfly
             span.r
               a(href="https://aitechflow.cn") aitechflow.cn

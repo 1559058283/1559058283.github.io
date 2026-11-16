@@ -358,7 +358,7 @@ html::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #d4b56e, #b8924a);
 }
 
-/* ---- 顶栏字标：LIUS，不用「流」 ---- */
+/* ---- 顶栏字标：LiuS，不用「流」 ---- */
 .top .bd .brand {
   display: inline-flex;
   align-items: flex-end;

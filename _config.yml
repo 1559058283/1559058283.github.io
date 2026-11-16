@@ -1,6 +1,6 @@
-title: LIUS | 技术博客
-subtitle: 'Java 开发 | AI 工程实践 | 个人建站笔记'
-description: '后端开发工程师的技术博客。记录 Java/AI 工程实践、部署踩坑和个人建站过程。'
+title: LiuS | 技术博客
+subtitle: '软件开发 | AI 工程 | 只记真实踩过的坑'
+description: '软件开发，也做 AI 工程。记录 AI Coding、Agent 和企业 AI 落地里真实踩过的坑。'
 keywords:
   - 技术博客
   - Java
@@ -8,7 +8,7 @@ keywords:
   - 大模型
   - Hexo
   - 建站教程
-author: LIUS
+author: LiuS
 language: zh-CN
 timezone: Asia/Shanghai
 

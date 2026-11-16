@@ -1,11 +1,11 @@
 nav#nav
   span#blog-info
-    a.nav-site-title(href=url_for('/') aria-label="LIUS · aitechflow")
+    a.nav-site-title(href=url_for('/') aria-label="LiuS · aitechflow")
       if theme.nav.logo
         img.site-icon(src=url_for(theme.nav.logo) alt='Logo')
       if theme.nav.display_title
         span.brand(aria-hidden="true")
-          span.nm LIUS
+          span.nm LiuS
         span.site aitechflow
     if globalPageType === 'post' && theme.nav.display_post_title
       a.nav-page-title(href=url_for('/'))

@@ -11,9 +11,9 @@ const FILES = {
     name: 'AboutMe.java', icon: 'j',
     lines: [
       `${K('public class')} AboutMe {`, ``,
-      `    ${K('String')} name  = ${S('"LIUS"')};`,
-      `    ${K('String')} role  = ${S('"后端开发工程师"')};`,
-      `    ${K('String')} focus = ${S('"Java / AI 工程化"')};`,
+      `    ${K('String')} name  = ${S('"LiuS"')};`,
+      `    ${K('String')} role  = ${S('"软件开发 / AI 工程"')};`,
+      `    ${K('String')} focus = ${S('"AI Coding / Agent / 企业 AI 落地"')};`,
       `    ${K('int')}    since = 2025;`, ``,
       `    ${C('// 不写泛泛而谈的教程，只记真实踩过的坑，')}`,
       `    ${C('// 以及当时为什么那样选。')}`,
@@ -23,9 +23,9 @@ const FILES = {
     ],
     raw: `public class AboutMe {
 
-    String name  = "LIUS";
-    String role  = "后端开发工程师";
-    String focus = "Java / AI 工程化";
+    String name  = "LiuS";
+    String role  = "软件开发 / AI 工程";
+    String focus = "AI Coding / Agent / 企业 AI 落地";
     int    since = 2025;
 
     // 不写泛泛而谈的教程，只记真实踩过的坑，
@@ -67,7 +67,7 @@ const FILES = {
     name: 'timeline.log', icon: 'l',
     lines: [
       `${C('# git log --oneline --reverse')}`, ``,
-      `${K('2025.04')}  ${S('init')}      aitechflow.cn 上线，专门记 Java 和部署里的选择`,
+      `${K('2025.04')}  ${S('init')}      aitechflow.cn 上线，只记真实踩过的坑`,
       `${K('2025.08')}  ${S('build')}     Spring Boot 按 web / domain / infra 拆开编译`,
       `${K('2025.11')}  ${S('perf')}      冷启动从十秒级收到数秒，镜像也改成分层`,
       `${K('2026.04')}  ${S('chore')}     博客迁到 GitHub Pages，源码和发布分开`,
@@ -78,7 +78,7 @@ const FILES = {
     ],
     raw: `# git log --oneline --reverse
 
-2025.04  init      aitechflow.cn 上线，专门记 Java 和部署里的选择
+2025.04  init      aitechflow.cn 上线，只记真实踩过的坑
 2025.08  build     Spring Boot 按 web / domain / infra 拆开编译
 2025.11  perf      冷启动从十秒级收到数秒，镜像也改成分层
 2026.04  chore     博客迁到 GitHub Pages，源码和发布分开
@@ -92,18 +92,18 @@ const FILES = {
     name: 'contact.md', icon: 'm',
     lines: [
       `${K('# 联系')}`, ``,
-      `${C('> 写信就行。Java 工程、AI 应用落地、建站踩坑，都可以。')}`, ``,
+      `${C('> 写信就行。软件开发、AI 工程，都可以。')}`, ``,
       `- 邮箱　　${S('lswyyj@163.com')}`,
       `- GitHub　${S('github.com/1559058283')}`,
       `- 博客　　${S('aitechflow.cn')}`,
       `- RSS　　 ${S('aitechflow.cn/atom.xml')}`, ``,
       `${K('## 聊什么都行')}`, ``,
-      `Java 工程实践、AI 应用落地、建站踩坑，`,
+      `AI Coding、Agent、企业 AI 落地，`,
       `或者只是想说这个皮肤还行 —— 都可以写信。`
     ],
     raw: `# 联系
 
-> 写信就行。Java 工程、AI 应用落地、建站踩坑，都可以。
+> 写信就行。软件开发、AI 工程，都可以。
 
 - 邮箱    lswyyj@163.com
 - GitHub  github.com/1559058283
@@ -112,7 +112,7 @@ const FILES = {
 
 ## 聊什么都行
 
-Java 工程实践、AI 应用落地、建站踩坑，
+AI Coding、Agent、企业 AI 落地，
 或者只是想说这个皮肤还行 —— 都可以写信。`
   }
 };
