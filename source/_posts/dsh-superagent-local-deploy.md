@@ -12,8 +12,6 @@ categories:
 description: 本机部署 DeepSeek Harness Superagent 后服务全绿，连续测试三个 Issue 却只有第三个被接单。记录账号配置、准入判断和从消息到回复的实际过程。
 ---
 
-> 本文的 Superagent 指 DeepSeek Harness（dsh）上的官方研究原型 [deepseek-ai/dsh-superagent-prototype](https://github.com/deepseek-ai/dsh-superagent-prototype)，不是 npm 上那个 superagent HTTP 客户端。
-
 ## 我先在助手对话里 @ 了它
 
 服务启动后，我先在当时协助部署的助手对话里发了一句「@Agent 小号，讲一下 superagent 的使用」，没有收到回复。面板上的 `running` 和 `queued` 都是 0。
