@@ -1,5 +1,5 @@
 ---
-title: 服务全绿，Issue 却没人接：DeepSeek Superagent 本机部署踩坑记
+title: 服务全绿，Issue 却没人接：DeepSeek Super-agent 本机部署实录
 date: 2026-11-13 12:14:00
 updated: 2026-11-13 12:14:00
 tags:
